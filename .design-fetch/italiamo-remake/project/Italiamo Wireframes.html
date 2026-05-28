@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Italiamo — 3 Style Directions (wireframes)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@300;400;700&family=Special+Elite&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Big+Shoulders+Display:wght@500;700;900&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style-futurist.css">
+<link rel="stylesheet" href="style-fresca.css">
+<style>
+  :root {
+    --paper: #f4efe6;
+    --ink: #1b1a17;
+    --pencil: #2a2a2a;
+    --muted: #8a8378;
+    --rule: #cdc4b3;
+    --accent: #c95431;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #e7e2d6; color: var(--ink); font-family: 'Kalam', sans-serif; }
+  body { padding-bottom: 120px; }
+
+  /* ---------- top bar / tabs ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: #1b1a17; color: #f4efe6;
+    padding: 14px 28px;
+    display: flex; align-items: center; gap: 24px;
+    border-bottom: 1px solid #000;
+  }
+  .topbar h1 {
+    font-family: 'Special Elite', monospace;
+    margin: 0; font-size: 15px; letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .topbar .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: #a8a094; letter-spacing: 0.1em;
+  }
+  .tabs {
+    margin-left: auto; display: flex; gap: 4px;
+    background: #2a2925; padding: 4px; border-radius: 999px;
+  }
+  .tab {
+    font-family: 'Caveat', cursive; font-size: 18px; font-weight: 700;
+    border: 0; background: transparent; color: #c9c0ad;
+    padding: 6px 18px; border-radius: 999px; cursor: pointer;
+    transition: all .15s;
+  }
+  .tab.active { background: #f4efe6; color: #1b1a17; }
+  .tab:hover:not(.active) { color: #fff; }
+
+  /* ---------- canvas ---------- */
+  .canvas { padding: 32px 28px 80px; }
+  .style-intro {
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px;
+    padding: 24px 28px; margin-bottom: 28px;
+    border: 1.5px dashed #1b1a17;
+    background: var(--paper);
+    border-radius: 4px;
+  }
+  .style-intro h2 {
+    font-family: 'Fraunces', serif; font-weight: 600; margin: 0 0 6px;
+    font-size: 36px; letter-spacing: -0.01em;
+  }
+  .style-intro .slug {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .style-intro p { font-size: 16px; line-height: 1.5; margin: 0 0 10px; }
+  .style-intro .palette {
+    display: flex; gap: 10px; margin-top: 14px;
+  }
+  .swatch {
+    width: 38px; height: 38px; border: 1.5px solid #1b1a17; border-radius: 2px;
+    position: relative;
+  }
+  .swatch::after {
+    content: attr(data-hex); position: absolute; top: 100%; left: 0;
+    font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted);
+    margin-top: 4px; letter-spacing: 0.05em;
+  }
+  .style-intro .moodbox {
+    border-left: 2px solid #1b1a17; padding-left: 14px;
+  }
+  .moodbox .row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+  .moodchip {
+    font-family: 'Caveat', cursive; font-size: 17px; font-weight: 600;
+    background: #fff; padding: 1px 10px; border: 1.2px solid #1b1a17;
+    border-radius: 999px;
+  }
+
+  /* ---------- screens grid ---------- */
+  .screens {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+  .frame {
+    background: var(--paper);
+    border: 1.5px solid #1b1a17;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 4px 4px 0 rgba(27,26,23,0.08);
+  }
+  .frame .label {
+    position: absolute; top: -11px; left: 16px;
+    font-family: 'Caveat', cursive; font-weight: 700; font-size: 17px;
+    background: #1b1a17; color: #f4efe6;
+    padding: 1px 12px; border-radius: 999px;
+    letter-spacing: 0.02em;
+  }
+  .frame .num {
+    position: absolute; top: 6px; right: 10px;
+    font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .frame-body { padding: 28px 18px 18px; }
+  .annot {
+    font-family: 'Caveat', cursive; font-weight: 600;
+    font-size: 16px; color: var(--accent);
+    line-height: 1.15;
+  }
+  .annot.s { font-size: 14px; }
+  .annot.arrow::before { content: '↳ '; }
+
+  /* ---------- generic wireframe primitives ---------- */
+  .box { border: 1.4px solid #1b1a17; background: #fff; }
+  .box.dashed { border-style: dashed; }
+  .ph {
+    background: repeating-linear-gradient(45deg, #fff 0 6px, #efe7d6 6px 7px);
+    border: 1.4px solid #1b1a17; display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .ph.x {
+    background: #fff;
+    background-image: linear-gradient(45deg, transparent calc(50% - 1px), #c9c0ad 50%, transparent calc(50% + 1px)),
+                      linear-gradient(-45deg, transparent calc(50% - 1px), #c9c0ad 50%, transparent calc(50% + 1px));
+  }
+  .scribble {
+    height: 8px; background: #1b1a17; margin: 4px 0;
+    border-radius: 1px; opacity: 0.85;
+  }
+  .scribble.thin { height: 4px; opacity: 0.55; }
+  .scribble.short { width: 40%; }
+  .scribble.mid { width: 65%; }
+  .scribble.long { width: 90%; }
+  .pill {
+    display: inline-block; padding: 3px 10px; border: 1.4px solid #1b1a17;
+    border-radius: 999px; background: #fff; font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .btn-wire {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 8px 14px; border: 1.4px solid #1b1a17; background: #1b1a17; color: #fff;
+    font-family: 'Caveat', cursive; font-weight: 700; font-size: 16px;
+    border-radius: 2px;
+  }
+  .row { display: flex; align-items: center; gap: 8px; }
+  .col { display: flex; flex-direction: column; gap: 8px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .stretch-12 { grid-column: span 12; }
+  .stretch-8 { grid-column: span 8; }
+  .stretch-6 { grid-column: span 6; }
+  .stretch-4 { grid-column: span 4; }
+  @media (max-width: 1100px) {
+    .stretch-8, .stretch-6, .stretch-4 { grid-column: span 12; }
+  }
+
+  /* ---------- mini header bar (shared, restyled per style) ---------- */
+  .navbar { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1.4px solid #1b1a17; background: #fffdf6; }
+  .navbar .brand { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
+  .navbar nav { display: flex; gap: 14px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .navbar .right { display: flex; gap: 12px; align-items: center; font-family: 'DM Mono', monospace; font-size: 10px; }
+  .footer-wire { background: #1b1a17; color: #f4efe6; padding: 16px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .footer-wire .col-f h5 { margin: 0 0 6px; font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 13px; letter-spacing: 0; text-transform: none; color: #d8cfba; }
+  .footer-wire .scribble { background: #d8cfba; opacity: 0.4; }
+
+  /* ===========================================================
+     STYLE 1 — EDITORIAL TRATTORIA
+     warm cream, serif, generous whitespace, asymmetric, hand-set
+     =========================================================== */
+  .s-editorial .frame { background: #f5efe4; }
+  .s-editorial .navbar { background: #f5efe4; border-bottom-color: #1b1a17; }
+  .s-editorial .navbar .brand { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 22px; }
+  .s-editorial .editorial-hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 22px; padding: 20px 18px 26px; }
+  .s-editorial .editorial-hero .ph { aspect-ratio: 5/6; }
+  .s-editorial .pullquote {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+    font-size: 28px; line-height: 1.1; letter-spacing: -0.01em;
+    padding-top: 12px;
+  }
+  .s-editorial .pullquote .drop { font-size: 64px; float: left; line-height: 0.85; padding: 6px 8px 0 0; font-style: normal; }
+  .s-editorial .eyebrow { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: #8c2a1f; }
+  .s-editorial .credit { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a8378; }
+  .s-editorial .cat-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; padding: 0 18px 18px; }
+  .s-editorial .cat-strip .ph { aspect-ratio: 3/4; }
+  .s-editorial .cat-strip .lbl { font-family: 'Fraunces', serif; font-style: italic; font-size: 15px; margin-top: 4px; }
+
+  .s-editorial .ed-prod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; padding: 0 18px 14px; }
+  .s-editorial .ed-prod .ph { aspect-ratio: 1/1; }
+  .s-editorial .ed-prod .name { font-family: 'Fraunces', serif; font-size: 17px; margin-top: 8px; letter-spacing: -0.01em; }
+  .s-editorial .ed-prod .meta { display: flex; justify-content: space-between; margin-top: 2px; }
+  .s-editorial .ed-prod .meta .left { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: #8a8378; }
+  .s-editorial .ed-prod .meta .price { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 13px; }
+
+  .s-editorial .pd-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; padding: 16px 22px 22px; }
+  .s-editorial .pd-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 8px; }
+  .s-editorial .pd-thumbs .ph { aspect-ratio: 1/1; }
+  .s-editorial .pd-info h3 { font-family: 'Fraunces', serif; font-weight: 400; font-style: italic; font-size: 32px; line-height: 1.05; margin: 14px 0 6px; }
+  .s-editorial .pd-info p { font-family: 'Fraunces', serif; font-size: 14px; line-height: 1.55; color: #2c2a25; margin: 8px 0; }
+  .s-editorial .ed-rule { height: 1px; background: #1b1a17; margin: 12px 0; }
+  .s-editorial .ed-link {
+    display: inline-block; font-family: 'Fraunces', serif; font-style: italic;
+    border-bottom: 1px solid #1b1a17; padding-bottom: 1px; font-size: 14px;
+  }
+  .s-editorial .checkout-btn {
+    display: inline-block; background: #1b1a17; color: #f5efe4;
+    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.22em;
+    padding: 12px 22px; text-transform: uppercase;
+  }
+  .s-editorial .cart-tbl { width: 100%; border-collapse: collapse; font-family: 'Fraunces', serif; font-size: 14px; }
+  .s-editorial .cart-tbl td, .s-editorial .cart-tbl th { padding: 12px 6px; border-bottom: 1px solid #cdc4b3; text-align: left; }
+  .s-editorial .cart-tbl th { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 400; color: #8a8378; }
+  .s-editorial .cart-tbl td.r, .s-editorial .cart-tbl th.r { text-align: right; font-variant-numeric: tabular-nums; }
+  .s-editorial .totals { display: flex; justify-content: flex-end; padding: 14px 22px; }
+  .s-editorial .totals .box { background: transparent; border: none; }
+  .s-editorial .totals dl { display: grid; grid-template-columns: auto auto; gap: 6px 24px; font-family: 'Fraunces', serif; font-size: 15px; }
+  .s-editorial .totals dt { color: #8a8378; }
+  .s-editorial .totals dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+  .s-editorial .blog-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 18px; padding: 18px; }
+  .s-editorial .blog-grid .lead .ph { aspect-ratio: 4/5; }
+  .s-editorial .blog-grid .side .ph { aspect-ratio: 3/2; }
+  .s-editorial .blog-grid h4 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px; line-height: 1.05; margin: 8px 0 4px; }
+  .s-editorial .blog-grid .side h4 { font-size: 16px; }
+  .s-editorial .article { padding: 18px 22px; max-width: 760px; }
+  .s-editorial .article .kicker { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: #8c2a1f; }
+  .s-editorial .article h2 { font-family: 'Fraunces', serif; font-weight: 400; font-style: italic; font-size: 44px; line-height: 1; margin: 10px 0 18px; letter-spacing: -0.015em; }
+  .s-editorial .article p { font-family: 'Fraunces', serif; font-size: 15px; line-height: 1.65; margin: 0 0 12px; }
+  .s-editorial .article .drop { font-family: 'Fraunces', serif; font-size: 70px; float: left; line-height: 0.85; padding: 8px 10px 0 0; }
+  .s-editorial .footer-ed { background: #f5efe4; color: #1b1a17; border-top: 1px solid #1b1a17; padding: 22px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 22px; font-family: 'Fraunces', serif; font-size: 13px; }
+  .s-editorial .footer-ed h5 { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; margin: 0 0 8px; color: #8a8378; }
+  .s-editorial .footer-ed .masthead { font-family: 'Fraunces', serif; font-style: italic; font-size: 26px; }
+
+  /* ===========================================================
+     STYLE 2 — MERCATO RETRO-FUTURE
+     warm cream, big rounded "sticker" cards, citrus palette
+     =========================================================== */
+  .s-mercato { --m-bg:#fff8ec; --m-orange:#f25e3d; --m-yellow:#f4c430; --m-green:#0e6e5a; --m-blue:#1a2a6b; --m-ink:#221a14; }
+  .s-mercato .frame { background: #fff8ec; border-color: #221a14; }
+  .s-mercato .frame::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.5;
+    background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+  .s-mercato .navbar { background: var(--m-yellow); border-bottom: 2px solid var(--m-ink); }
+  .s-mercato .navbar .brand { font-family: 'Fraunces', serif; font-weight: 600; font-style: italic; font-size: 22px; color: var(--m-ink); }
+  .s-mercato .navbar nav { font-family: 'DM Mono', monospace; }
+  .s-mercato .chip-row { display: flex; gap: 10px; padding: 12px 18px; flex-wrap: wrap; }
+  .s-mercato .chip {
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em;
+    padding: 6px 14px; border: 2px solid var(--m-ink);
+    background: #fff; border-radius: 999px;
+    box-shadow: 3px 3px 0 var(--m-ink);
+    text-transform: uppercase;
+  }
+  .s-mercato .chip.active { background: var(--m-orange); color: #fff; }
+  .s-mercato .chip.yellow { background: var(--m-yellow); }
+  .s-mercato .chip.green { background: var(--m-green); color: #fff; }
+  .s-mercato .chip.blue { background: var(--m-blue); color: #fff; }
+
+  .s-mercato .m-hero { position: relative; padding: 24px 22px 30px; overflow: hidden; }
+  .s-mercato .m-hero h2 {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 60px; line-height: 0.95;
+    margin: 8px 0 0; color: var(--m-ink); letter-spacing: -0.02em;
+  }
+  .s-mercato .m-hero h2 em { font-style: italic; color: var(--m-orange); }
+  .s-mercato .m-hero .sub { font-family: 'Kalam', sans-serif; font-size: 15px; max-width: 360px; margin-top: 12px; color: #4a3a2a; }
+  .s-mercato .m-hero .blob {
+    position: absolute; border: 2px solid var(--m-ink); border-radius: 50%;
+  }
+  .s-mercato .m-hero .blob.b1 { width: 130px; height: 130px; background: var(--m-orange); right: 28px; top: 18px; }
+  .s-mercato .m-hero .blob.b2 { width: 78px; height: 78px; background: var(--m-yellow); right: 120px; top: 96px; }
+  .s-mercato .m-hero .blob.b3 { width: 50px; height: 50px; background: var(--m-green); right: 36px; top: 138px; }
+  .s-mercato .m-hero .cta { display: inline-flex; margin-top: 18px; gap: 10px; }
+  .s-mercato .btn-candy {
+    background: var(--m-orange); color: #fff;
+    border: 2px solid var(--m-ink); border-radius: 999px;
+    padding: 12px 22px; font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: 16px; box-shadow: 4px 4px 0 var(--m-ink);
+  }
+  .s-mercato .btn-candy.alt { background: #fff; color: var(--m-ink); }
+
+  .s-mercato .m-prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 16px 18px; }
+  .s-mercato .m-card {
+    background: #fff; border: 2px solid var(--m-ink); border-radius: 24px;
+    padding: 12px; position: relative; box-shadow: 4px 4px 0 var(--m-ink);
+  }
+  .s-mercato .m-card .ph { aspect-ratio: 1/1; border-radius: 14px; border-color: var(--m-ink); }
+  .s-mercato .m-card .tag {
+    position: absolute; top: 8px; left: 8px;
+    background: var(--m-yellow); border: 2px solid var(--m-ink); border-radius: 6px;
+    padding: 4px 10px; font-family: 'DM Mono', monospace; font-size: 11px;
+    transform: rotate(-3deg); font-weight: 600;
+  }
+  .s-mercato .m-card h5 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 16px; margin: 10px 0 2px; line-height: 1.1; }
+  .s-mercato .m-card .producer { font-family: 'DM Mono', monospace; font-size: 10px; color: #6b5a44; letter-spacing: 0.08em; }
+  .s-mercato .m-card .add {
+    position: absolute; bottom: 8px; right: 8px;
+    background: var(--m-green); color: #fff; border: 2px solid var(--m-ink);
+    width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+    font-family: 'Fraunces', serif; font-size: 24px; line-height: 1; box-shadow: 2px 2px 0 var(--m-ink);
+  }
+  .s-mercato .m-categories { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; padding: 0 18px 18px; }
+  .s-mercato .cat-card {
+    aspect-ratio: 3/4; background: var(--m-orange); border: 2px solid var(--m-ink); border-radius: 18px;
+    display: flex; align-items: flex-end; padding: 10px;
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 18px; color: #fff;
+    box-shadow: 3px 3px 0 var(--m-ink);
+  }
+  .s-mercato .cat-card.y { background: var(--m-yellow); color: var(--m-ink); }
+  .s-mercato .cat-card.g { background: var(--m-green); }
+  .s-mercato .cat-card.b { background: var(--m-blue); }
+  .s-mercato .cat-card.r { background: #d44; }
+
+  .s-mercato .m-pdp { display: grid; grid-template-columns: 1.1fr 1fr; gap: 22px; padding: 22px; }
+  .s-mercato .m-pdp .main-img { aspect-ratio: 1/1; background: #fff; border: 2px solid var(--m-ink); border-radius: 24px; position: relative; box-shadow: 6px 6px 0 var(--m-ink); }
+  .s-mercato .m-pdp .main-img .ph { position: absolute; inset: 14%; border-radius: 8px; }
+  .s-mercato .m-pdp .info h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 36px; margin: 0 0 6px; line-height: 1; }
+  .s-mercato .m-pdp .info .producer { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--m-green); letter-spacing: 0.1em; }
+  .s-mercato .price-tag {
+    display: inline-block; background: var(--m-yellow); border: 2px solid var(--m-ink);
+    border-radius: 8px; padding: 10px 18px; transform: rotate(-3deg);
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 32px;
+    margin: 16px 0; box-shadow: 3px 3px 0 var(--m-ink);
+  }
+  .s-mercato .divider { height: 24px; background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 24' preserveAspectRatio='none'><path d='M0 12 Q 25 0, 50 12 T 100 12' stroke='%23221a14' fill='none' stroke-width='1.5'/></svg>") repeat-x; }
+  .s-mercato .m-cart { padding: 18px 22px; font-family: 'DM Mono', monospace; font-size: 13px; }
+  .s-mercato .receipt {
+    background: #fff; border: 2px solid var(--m-ink); border-radius: 14px;
+    padding: 18px; position: relative;
+    background-image: linear-gradient(90deg, transparent 0 calc(100% - 1px), rgba(0,0,0,0.05) 100%);
+  }
+  .s-mercato .receipt::before, .s-mercato .receipt::after {
+    content: ''; position: absolute; left: 0; right: 0; height: 12px;
+    background: radial-gradient(circle at 6px 6px, var(--m-bg) 5px, transparent 6px) repeat-x;
+    background-size: 14px 12px;
+  }
+  .s-mercato .receipt::before { top: -8px; }
+  .s-mercato .receipt::after { bottom: -8px; }
+  .s-mercato .receipt h4 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; margin: 0 0 12px; letter-spacing: -0.01em; text-align: center; }
+  .s-mercato .receipt .line { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dashed #b8a994; }
+  .s-mercato .receipt .total { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 600; }
+  .s-mercato .m-footer { background: var(--m-blue); color: #fff8ec; padding: 22px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 22px; }
+  .s-mercato .m-footer h5 { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; margin: 0 0 8px; }
+  .s-mercato .sun { width: 60px; height: 60px; border-radius: 50%; background: var(--m-yellow); border: 2px solid #fff8ec; box-shadow: 0 0 0 6px var(--m-orange), 0 0 0 8px #fff8ec; display: inline-block; margin-bottom: 12px; }
+  .s-mercato .m-blog { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 18px; }
+  .s-mercato .m-blog .card { background: #fff; border: 2px solid var(--m-ink); border-radius: 18px; overflow: hidden; box-shadow: 4px 4px 0 var(--m-ink); }
+  .s-mercato .m-blog .card .ph { aspect-ratio: 4/3; border: none; border-bottom: 2px solid var(--m-ink); border-radius: 0; }
+  .s-mercato .m-blog .card .pad { padding: 12px; }
+  .s-mercato .m-blog h5 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 18px; margin: 4px 0; line-height: 1.05; }
+
+  /* ===========================================================
+     STYLE 3 — BOTTEGA BRUTALIST
+     concrete grey, monospace, hairlines, signal red accent
+     =========================================================== */
+  .s-brutal { --b-bg: #ececea; --b-ink: #0a0a0a; --b-red: #ff3b00; --b-mute: #6b6b68; }
+  .s-brutal .frame { background: var(--b-bg); border-color: var(--b-ink); border-radius: 0; box-shadow: none; }
+  .s-brutal .frame .label { background: var(--b-ink); border-radius: 0; font-family: 'DM Mono', monospace; font-weight: 500; text-transform: uppercase; font-size: 11px; letter-spacing: 0.18em; padding: 3px 10px; }
+  .s-brutal .navbar { background: #fff; border-bottom: 1px solid var(--b-ink); padding: 10px 16px; }
+  .s-brutal .navbar .brand { font-family: 'DM Mono', monospace; font-weight: 500; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .s-brutal .navbar nav { gap: 22px; }
+  .s-brutal .b-hero { padding: 0; border-top: 1px solid var(--b-ink); border-bottom: 1px solid var(--b-ink); position: relative; }
+  .s-brutal .b-hero .ph { aspect-ratio: 16/7; background: #fff; border: none; }
+  .s-brutal .b-hero .overlay {
+    position: absolute; top: 18px; left: 18px;
+    background: rgba(255,255,255,0.92); border: 1px solid var(--b-ink);
+    padding: 10px 14px; font-family: 'DM Mono', monospace; font-size: 11px;
+    line-height: 1.5; letter-spacing: 0.08em;
+  }
+  .s-brutal .b-hero .overlay .row { display: flex; gap: 14px; }
+  .s-brutal .b-hero .overlay strong { color: var(--b-red); font-weight: 500; }
+  .s-brutal .b-hero h1 {
+    position: absolute; left: 18px; bottom: 14px;
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 56px; line-height: 0.92;
+    margin: 0; letter-spacing: -0.03em; color: #fff;
+    mix-blend-mode: difference;
+  }
+
+  .s-brutal .b-shop {
+    display: grid; grid-template-columns: 180px 1fr;
+  }
+  .s-brutal .b-side {
+    border-right: 1px solid var(--b-ink); padding: 14px;
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em;
+  }
+  .s-brutal .b-side h6 { margin: 0 0 8px; text-transform: uppercase; font-size: 10px; letter-spacing: 0.22em; color: var(--b-mute); font-weight: 400; }
+  .s-brutal .b-side ul { list-style: none; padding: 0; margin: 0 0 16px; }
+  .s-brutal .b-side li { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #d3d3d0; text-transform: uppercase; }
+  .s-brutal .b-side li.on { color: var(--b-red); }
+  .s-brutal .b-side li .ct { color: var(--b-mute); }
+  .s-brutal .b-prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-left: 1px solid var(--b-ink); }
+  .s-brutal .b-prod {
+    background: #fff; padding: 10px; border-right: 1px solid var(--b-ink); border-bottom: 1px solid var(--b-ink);
+    display: flex; flex-direction: column; gap: 8px; min-height: 200px; position: relative;
+  }
+  .s-brutal .b-prod .sku { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--b-mute); letter-spacing: 0.1em; }
+  .s-brutal .b-prod .ph { flex: 1; aspect-ratio: 1/1; border: none; background-color: #fafaf9; }
+  .s-brutal .b-prod .row { display: flex; justify-content: space-between; align-items: baseline; }
+  .s-brutal .b-prod .name { font-family: 'Fraunces', serif; font-size: 13px; font-weight: 500; line-height: 1.1; max-width: 60%; }
+  .s-brutal .b-prod .price { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; }
+  .s-brutal .b-pdp { display: grid; grid-template-columns: 1.4fr 1fr; }
+  .s-brutal .b-pdp .left { border-right: 1px solid var(--b-ink); background: #fff; padding: 0; }
+  .s-brutal .b-pdp .left .ph { aspect-ratio: 4/5; border: none; }
+  .s-brutal .b-pdp .right { padding: 18px; }
+  .s-brutal .b-pdp .sku { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: var(--b-red); text-transform: uppercase; }
+  .s-brutal .b-pdp h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 34px; margin: 8px 0 14px; line-height: 0.95; letter-spacing: -0.02em; }
+  .s-brutal .b-pdp dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-family: 'DM Mono', monospace; font-size: 11px; border-top: 1px solid var(--b-ink); padding-top: 10px; margin-top: 14px; }
+  .s-brutal .b-pdp dt { color: var(--b-mute); text-transform: uppercase; letter-spacing: 0.08em; }
+  .s-brutal .b-pdp dd { margin: 0; }
+  .s-brutal .b-btn { display: inline-block; background: var(--b-ink); color: #fff; padding: 14px 22px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; margin-top: 18px; }
+  .s-brutal .b-btn:hover { background: var(--b-red); }
+  .s-brutal .manifest { padding: 16px; font-family: 'DM Mono', monospace; font-size: 12px; }
+  .s-brutal .manifest h4 { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--b-ink); }
+  .s-brutal .manifest table { width: 100%; border-collapse: collapse; }
+  .s-brutal .manifest th, .s-brutal .manifest td { padding: 8px 6px; border-bottom: 1px solid #c8c8c6; text-align: left; font-weight: 400; }
+  .s-brutal .manifest th { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--b-mute); }
+  .s-brutal .manifest td.r, .s-brutal .manifest th.r { text-align: right; }
+  .s-brutal .manifest tr.tot td { border-bottom: 3px double var(--b-ink); border-top: 1px solid var(--b-ink); font-weight: 500; color: var(--b-red); }
+  .s-brutal .b-about { display: grid; grid-template-columns: 1fr 1.4fr; }
+  .s-brutal .b-about .ph { aspect-ratio: 1/1; border: none; border-right: 1px solid var(--b-ink); background: #fff; }
+  .s-brutal .b-about .right { padding: 22px; }
+  .s-brutal .b-about h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 36px; margin: 0 0 14px; line-height: 0.95; letter-spacing: -0.02em; }
+  .s-brutal .b-about p { font-family: 'DM Mono', monospace; font-size: 12px; line-height: 1.6; margin: 0 0 10px; }
+  .s-brutal .b-blog { padding: 0; }
+  .s-brutal .b-blog .row { display: grid; grid-template-columns: 100px 1fr 120px 80px; border-bottom: 1px solid var(--b-ink); padding: 10px 16px; font-family: 'DM Mono', monospace; font-size: 12px; align-items: center; }
+  .s-brutal .b-blog .row:first-child { background: var(--b-ink); color: #fff; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; padding: 8px 16px; }
+  .s-brutal .b-blog .row .title { font-family: 'Fraunces', serif; font-weight: 500; font-size: 15px; }
+  .s-brutal .b-foot { background: var(--b-ink); color: #ececea; padding: 22px 16px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 18px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em; }
+  .s-brutal .b-foot h6 { margin: 0 0 8px; font-size: 10px; letter-spacing: 0.22em; color: #7a7a78; text-transform: uppercase; font-weight: 400; }
+  .s-brutal .b-foot .brand { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 600; letter-spacing: -0.01em; color: #fff; }
+
+  /* ---------- annotations / arrows ---------- */
+  .pencil-note {
+    position: absolute; font-family: 'Caveat', cursive; color: #c95431;
+    font-size: 16px; line-height: 1.05; font-weight: 600; pointer-events: none;
+  }
+  .pencil-note.s { font-size: 14px; }
+  .pencil-note .arr {
+    display: inline-block; font-family: 'Caveat', cursive; transform: scale(1.5,1) translateY(2px);
+  }
+
+  /* hidden style sections */
+  .style-pane { display: none; }
+  .style-pane.active { display: block; }
+
+  /* helpers */
+  .legend {
+    margin-top: 30px; padding: 14px 18px; background: #fffdf6; border: 1.4px dashed #1b1a17;
+    font-family: 'Kalam', sans-serif; font-size: 14px;
+    display: flex; gap: 22px; flex-wrap: wrap; align-items: center;
+  }
+  .legend strong { font-family: 'Special Elite', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .legend .item { display: flex; gap: 8px; align-items: center; }
+  .legend .swatch-sm { width: 16px; height: 16px; border: 1.4px solid #1b1a17; }
+
+</style>
+</head>
+<body style="background-color: rgb(255, 255, 255); font-family: Lato">
+
+<div class="topbar">
+  <h1>ITALIAMO · wireframes</h1>
+  <span class="meta">3 directions · home · shop · pdp · cart · about · blog</span>
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-style="editorial">① Editorial Trattoria</button>
+    <button class="tab" data-style="mercato">② Mercato Retro-Future</button>
+    <button class="tab" data-style="brutal">③ Bottega Brutalist</button>
+    <button class="tab" data-style="futurist">④ Officina / 2099</button>
+    <button class="tab" data-style="fresca">⑤ Aranciata</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     STYLE 1 — EDITORIAL TRATTORIA
+============================================================= -->
+<section class="style-pane active s-editorial" data-pane="editorial">
+  <div class="canvas">
+
+    <div class="style-intro">
+      <div>
+        <div class="slug">style 01 / slug: ?style=editorial</div>
+        <h2>Editorial Trattoria</h2>
+        <p>A high-end Italian food zine printed on warm cream paper. Quiet, confident, lots of breathing room. <em>Apartamento × Cereal × Slow Food guides</em>.</p>
+        <div class="palette">
+          <div class="swatch" data-hex="#F5EFE4" style="background:#F5EFE4"></div>
+          <div class="swatch" data-hex="#1B1A17" style="background:#1B1A17"></div>
+          <div class="swatch" data-hex="#8C2A1F" style="background:#8C2A1F"></div>
+          <div class="swatch" data-hex="#3D5B3A" style="background:#3D5B3A"></div>
+          <div class="swatch" data-hex="#A89C86" style="background:#A89C86"></div>
+        </div>
+      </div>
+      <div class="moodbox">
+        <div class="row">
+          <span class="moodchip">editorial</span>
+          <span class="moodchip">paper</span>
+          <span class="moodchip">restrained</span>
+          <span class="moodchip">typographic</span>
+          <span class="moodchip">sun-bleached</span>
+          <span class="moodchip">hand-set</span>
+        </div>
+        <p style="font-family: 'Fraunces', serif; font-style: italic; font-size: 15px; margin-top: 10px;">"Feels like the importer who knows the producer's grandfather, writing a magazine column."</p>
+      </div>
+    </div>
+
+    <div class="screens">
+
+      <!-- HOME -->
+      <div class="frame stretch-12">
+        <div class="label">① Home</div>
+        <div class="num">/[locale]/</div>
+        <div class="navbar">
+          <div class="brand">Italiamo<span style="font-size:11px;font-style:normal;color:#8a8378;font-family:'DM Mono',monospace;letter-spacing:.18em;padding-left:8px;">— EST. 2024</span></div>
+          <nav><span>Bottega</span><span>Storia</span><span>Produttori</span><span>Diario</span></nav>
+          <div class="right"><span>IT / SK</span><span>Cesto (3)</span></div>
+        </div>
+        <div class="editorial-hero">
+          <div class="ph">single hero photograph · vineyard / hands / table</div>
+          <div>
+            <div class="eyebrow">№ 01 · Primavera 2026</div>
+            <p class="pullquote"><span class="drop">“</span>Pasta dell'<em>Abruzzo</em>, vini delle <em>Marche</em>, caffè di un torrefattore napoletano che ne brucia 40 chili al giorno.”</p>
+            <div class="credit" style="margin-top: 24px;">— Tomáš, fondatore. Bratislava ⟶ Pescara</div>
+            <div style="margin-top: 30px; display:flex; gap:18px;">
+              <span class="ed-link">Sfoglia la bottega</span>
+              <span class="ed-link">Leggi il diario</span>
+            </div>
+          </div>
+        </div>
+        <div class="cat-strip">
+          <div><div class="ph">vini</div><div class="lbl">Vini</div></div>
+          <div><div class="ph">caffè</div><div class="lbl">Caffè</div></div>
+          <div><div class="ph">pasta</div><div class="lbl">Pasta</div></div>
+          <div><div class="ph">salse</div><div class="lbl">Salse</div></div>
+          <div><div class="ph">dolci</div><div class="lbl">Dolci</div></div>
+        </div>
+        <div style="padding: 8px 18px 4px;"><div class="eyebrow">Scelti questa settimana</div></div>
+        <div class="ed-prod-grid">
+          <div class="ed-prod">
+            <div class="ph">product · transparent png</div>
+            <div class="name">Montepulciano d'Abruzzo, 2021</div>
+            <div class="meta"><span class="left">Cantine Cataldi · Abruzzo</span><span class="price">€18,40</span></div>
+          </div>
+          <div class="ed-prod">
+            <div class="ph">product</div>
+            <div class="name">Caffè Napoletano, miscela bar</div>
+            <div class="meta"><span class="left">Torrefazione Vesuvio · Napoli</span><span class="price">€9,90</span></div>
+          </div>
+        </div>
+        <div class="footer-ed">
+          <div>
+            <div class="masthead">Italiamo</div>
+            <div style="margin-top:6px;font-size:12px;color:#8a8378;">Una piccola redazione · piccoli produttori · senza intermediari</div>
+          </div>
+          <div><h5>Bottega</h5><div class="scribble mid"></div><div class="scribble short"></div><div class="scribble mid"></div></div>
+          <div><h5>Storie</h5><div class="scribble mid"></div><div class="scribble short"></div></div>
+          <div><h5>Newsletter</h5><div class="scribble long"></div><div class="scribble short"></div></div>
+        </div>
+        <span class="pencil-note" style="top: 80px; right: 38%;">↙ single hero, no carousel</span>
+        <span class="pencil-note s" style="top: 240px; right: 20px;">→ pull-quote sets the voice</span>
+      </div>
+
+      <!-- SHOP -->
+      <div class="frame stretch-8">
+        <div class="label">② Shop · index</div>
+        <div class="num">/shop</div>
+        <div class="navbar">
+          <div class="brand">Italiamo</div>
+          <nav><span>Bottega</span><span>Storia</span><span>Produttori</span></nav>
+          <div class="right">IT / SK · Cesto (3)</div>
+        </div>
+        <div style="padding: 18px 22px 6px;">
+          <div class="eyebrow">La bottega · 24 referenze</div>
+          <h3 style="font-family: 'Fraunces', serif; font-weight: 400; font-style: italic; font-size: 40px; margin: 6px 0 0; letter-spacing: -0.02em;">Tutto quello che importiamo,<br>ordinato per regione.</h3>
+        </div>
+        <div style="display:flex; gap: 16px; padding: 14px 22px; border-bottom: 1px solid #cdc4b3; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;">
+          <span style="border-bottom: 1.4px solid #1b1a17; padding-bottom: 2px;">Tutto · 24</span>
+          <span style="color:#8a8378;">Vini · 8</span>
+          <span style="color:#8a8378;">Caffè · 4</span>
+          <span style="color:#8a8378;">Pasta · 6</span>
+          <span style="color:#8a8378;">Salse · 3</span>
+          <span style="color:#8a8378;">Dolci · 3</span>
+          <span style="margin-left:auto;color:#8a8378;">↓ Regione, A→Z</span>
+        </div>
+        <div class="ed-prod-grid" style="padding-top: 18px;">
+          <div class="ed-prod"><div class="ph">prod</div><div class="name">Olio EVO Frantoio Galantino</div><div class="meta"><span class="left">Bisceglie · Puglia</span><span class="price">€14,20</span></div></div>
+          <div class="ed-prod"><div class="ph">prod</div><div class="name">Strangozzi di farro</div><div class="meta"><span class="left">Spoleto · Umbria</span><span class="price">€6,40</span></div></div>
+          <div class="ed-prod"><div class="ph">prod</div><div class="name">Sugo di pomodoro datterino</div><div class="meta"><span class="left">Pachino · Sicilia</span><span class="price">€7,10</span></div></div>
+          <div class="ed-prod"><div class="ph">prod</div><div class="name">Cantucci alle mandorle</div><div class="meta"><span class="left">Prato · Toscana</span><span class="price">€8,90</span></div></div>
+        </div>
+        <span class="pencil-note s" style="top: 200px; left: 22px;">↳ filter as inline ribbon, not chips</span>
+        <span class="pencil-note s" style="bottom: 14px; right: 22px;">2-col grid, editorial captions</span>
+      </div>
+
+      <!-- PDP -->
+      <div class="frame stretch-4">
+        <div class="label">③ Product detail</div>
+        <div class="num">/shop/[slug]</div>
+        <div class="pd-grid">
+          <div>
+            <div class="ph" style="aspect-ratio: 4/5;">main shot</div>
+            <div class="pd-thumbs">
+              <div class="ph">1</div><div class="ph">2</div><div class="ph">3</div><div class="ph">4</div>
+            </div>
+          </div>
+          <div class="pd-info">
+            <div class="eyebrow">Vino rosso · Abruzzo · 2021</div>
+            <h3>Montepulciano d'Abruzzo.</h3>
+            <div style="font-family: 'DM Mono', monospace; font-size: 12px;">€18,40 · 750 ml</div>
+            <div class="ed-rule"></div>
+            <p>Cantine Cataldi, terza generazione, vigneti a 350 m s.l.m. Vendemmia a mano, fermentazione spontanea.</p>
+            <p><em>Note di amarena, tabacco dolce, finale lungo.</em></p>
+            <span class="checkout-btn">Aggiungi al cesto · €18,40</span>
+            <div class="ed-rule"></div>
+            <div class="eyebrow">Si abbina con</div>
+            <div class="grid2" style="margin-top:8px;">
+              <div class="ph" style="aspect-ratio:1/1;">rel·1</div>
+              <div class="ph" style="aspect-ratio:1/1;">rel·2</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CART -->
+      <div class="frame stretch-6">
+        <div class="label">④ Cart</div>
+        <div class="num">/cart</div>
+        <div style="padding: 18px 22px 0;">
+          <div class="eyebrow">Il tuo cesto · 3 referenze</div>
+          <h3 style="font-family: 'Fraunces', serif; font-weight: 400; font-style: italic; font-size: 30px; margin: 6px 0 14px;">Riepilogo.</h3>
+        </div>
+        <div style="padding: 0 22px;">
+          <table class="cart-tbl">
+            <thead><tr><th></th><th>Articolo</th><th class="r">Q.tà</th><th class="r">Prezzo</th></tr></thead>
+            <tbody>
+              <tr><td style="width:60px;"><div class="ph" style="width:48px;height:48px;">i</div></td><td>Montepulciano d'Abruzzo<br><span style="font-family:'DM Mono',monospace;font-size:10px;color:#8a8378;letter-spacing:0.12em;">CANTINE CATALDI</span></td><td class="r">2</td><td class="r">€36,80</td></tr>
+              <tr><td><div class="ph" style="width:48px;height:48px;">i</div></td><td>Caffè Napoletano<br><span style="font-family:'DM Mono',monospace;font-size:10px;color:#8a8378;letter-spacing:0.12em;">VESUVIO · 250G</span></td><td class="r">1</td><td class="r">€9,90</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="totals">
+          <div class="box">
+            <dl>
+              <dt>Subtotale</dt><dd>€46,70</dd>
+              <dt>Spedizione</dt><dd>€4,90</dd>
+              <dt style="font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:#1b1a17;border-top:1px solid #1b1a17;padding-top:8px;margin-top:6px;">Totale</dt>
+              <dd style="font-family:'Fraunces',serif;font-size:20px;border-top:1px solid #1b1a17;padding-top:8px;margin-top:6px;">€51,60</dd>
+            </dl>
+            <div style="text-align:right;margin-top:16px;"><span class="checkout-btn">Procedi al pagamento →</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="frame stretch-6">
+        <div class="label">⑤ About / Storia</div>
+        <div class="num">/about</div>
+        <div class="article">
+          <div class="kicker">Chi siamo · No. 01</div>
+          <h2>Da Bratislava<br>all'Abruzzo,<br>senza scali.</h2>
+          <p><span class="drop">N</span>el 2024 abbiamo iniziato a portare a casa, una scatola alla volta, le bottiglie e i barattoli che ci mancavano davvero. Poi un produttore ci ha chiesto se conoscevamo qualcuno in Slovacchia. La risposta è diventata Italiamo.</p>
+          <p>Lavoriamo solo con famiglie e piccole cooperative. Visitiamo ogni produttore almeno una volta l'anno. Nessun intermediario, nessuna catena lunga.</p>
+        </div>
+        <span class="pencil-note s" style="bottom: 22px; right: 22px;">↘ drop cap + hanging indent</span>
+      </div>
+
+      <!-- BLOG LIST -->
+      <div class="frame stretch-8">
+        <div class="label">⑥ Diario · listing</div>
+        <div class="num">/blog</div>
+        <div style="padding: 18px 22px 0;">
+          <div class="eyebrow">Diario · campo, cantina, cucina</div>
+          <h3 style="font-family: 'Fraunces', serif; font-weight: 400; font-style: italic; font-size: 38px; margin: 6px 0 4px; letter-spacing: -0.02em;">Letture lente,<br>una al mese.</h3>
+        </div>
+        <div class="blog-grid">
+          <div class="lead">
+            <div class="ph">lead image · vineyard at golden hour</div>
+            <div class="eyebrow" style="margin-top:10px;">№ 12 · marzo</div>
+            <h4>La vendemmia di Cataldi: tre giorni in vigna.</h4>
+            <div class="credit">Scritto da Tomáš · 8 min di lettura</div>
+          </div>
+          <div class="side">
+            <div class="ph">img</div>
+            <div class="eyebrow" style="margin-top:6px;">№ 11</div>
+            <h4>Il caffè non è bruciato, è napoletano.</h4>
+            <div class="credit">5 min</div>
+            <div class="ed-rule"></div>
+            <div class="ph">img</div>
+            <div class="eyebrow" style="margin-top:6px;">№ 10</div>
+            <h4>Olio nuovo: come si assaggia.</h4>
+          </div>
+          <div class="side">
+            <div class="ph">img</div>
+            <div class="eyebrow" style="margin-top:6px;">№ 09</div>
+            <h4>Pasta di farro: la storia di Spoleto.</h4>
+            <div class="ed-rule"></div>
+            <div class="ph">img</div>
+            <div class="eyebrow" style="margin-top:6px;">№ 08</div>
+            <h4>Pomodoro datterino, perché.</h4>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARTICLE -->
+      <div class="frame stretch-4">
+        <div class="label">⑥b Article</div>
+        <div class="num">/blog/[slug]</div>
+        <div class="article">
+          <div class="kicker">№ 12 · campo</div>
+          <h2>La vendemmia.</h2>
+          <div class="credit">Tomáš · 8 min · marzo 2026</div>
+          <div class="ed-rule"></div>
+          <p><span class="drop">A</span> Pescara si arriva di notte e si parte all'alba. Cataldi ha 14 ettari di Montepulciano. Le mani sono quattro: lui, la moglie, due cugini.</p>
+          <p>Le casse di plastica blu sono la cosa più moderna in tutto il processo, e anche quelle hanno vent'anni.</p>
+          <div class="ph" style="aspect-ratio: 4/3; margin: 14px 0;">inline image</div>
+          <p>Il vino di quest'anno arriva a Bratislava in maggio. Lo trovate in bottega.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="legend">
+      <strong>Notes</strong>
+      <div class="item"><span class="swatch-sm" style="background:#F5EFE4"></span>cream paper bg</div>
+      <div class="item"><span class="swatch-sm" style="background:#8C2A1F"></span>tomato red (sparingly · eyebrows)</div>
+      <div class="item"><span class="swatch-sm" style="background:#1B1A17"></span>ink black</div>
+      <div class="item">No carousel · no filled buttons except checkout · text-link underlines animate · drop caps on long copy</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     STYLE 2 — MERCATO RETRO-FUTURE
+============================================================= -->
+<section class="style-pane s-mercato" data-pane="mercato">
+  <div class="canvas">
+
+    <div class="style-intro" style="background: #fff8ec; border-color: #221a14;">
+      <div>
+        <div class="slug">style 02 / slug: ?style=mercato</div>
+        <h2 style="color:#221a14;">Mercato <em style="color:#f25e3d;">Retro-Future</em></h2>
+        <p>Sunlit Italian market poster meets 70s travel poster meets candy-physical web craft. Big, joyful, tactile.</p>
+        <div class="palette">
+          <div class="swatch" data-hex="#FFF8EC" style="background:#FFF8EC"></div>
+          <div class="swatch" data-hex="#F25E3D" style="background:#F25E3D"></div>
+          <div class="swatch" data-hex="#F4C430" style="background:#F4C430"></div>
+          <div class="swatch" data-hex="#0E6E5A" style="background:#0E6E5A"></div>
+          <div class="swatch" data-hex="#1A2A6B" style="background:#1A2A6B"></div>
+        </div>
+      </div>
+      <div class="moodbox">
+        <div class="row">
+          <span class="moodchip">sun</span>
+          <span class="moodchip">citrus</span>
+          <span class="moodchip">gloss</span>
+          <span class="moodchip">posterized</span>
+          <span class="moodchip">candy-physical</span>
+          <span class="moodchip">optimistic</span>
+        </div>
+        <p style="font-family: 'Fraunces', serif; font-style: italic; font-size: 15px; margin-top: 10px;">"Buying a jar of pesto should feel like Saturday morning at the market."</p>
+      </div>
+    </div>
+
+    <div class="screens">
+
+      <!-- HOME -->
+      <div class="frame stretch-12">
+        <div class="label">① Home</div>
+        <div class="num">/[locale]/</div>
+        <div class="navbar">
+          <div class="brand">Italiamo</div>
+          <nav><span>BOTTEGA</span><span>STORIE</span><span>PRODUTTORI</span><span>DIARIO</span></nav>
+          <div class="right">IT/SK · 🧺 3</div>
+        </div>
+        <div class="m-hero">
+          <div class="blob b1"></div>
+          <div class="blob b2"></div>
+          <div class="blob b3"></div>
+          <div style="font-family:'DM Mono',monospace; font-size: 11px; letter-spacing: 0.18em;">— BENVENUTI —</div>
+          <h2>Sapori<br><em>siciliani</em>,<br>spediti<br>il martedì.</h2>
+          <p class="sub">Vini, paste, caffè e salse di 18 piccoli produttori italiani. Niente intermediari, niente magazzini polverosi.</p>
+          <div class="cta">
+            <span class="btn-candy">Sfoglia la bottega →</span>
+            <span class="btn-candy alt">I produttori</span>
+          </div>
+        </div>
+        <div class="chip-row">
+          <span class="chip active">TUTTO · 24</span>
+          <span class="chip yellow">VINI</span>
+          <span class="chip green">CAFFÈ</span>
+          <span class="chip blue">PASTA</span>
+          <span class="chip">SALSE</span>
+          <span class="chip">DOLCI</span>
+        </div>
+        <div class="divider"></div>
+        <div style="padding: 6px 18px 0;"><div style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;">In primo piano</div></div>
+        <div class="m-prod-grid">
+          <div class="m-card">
+            <span class="tag">€18,40</span>
+            <div class="ph">bottle</div>
+            <h5>Montepulciano d'Abruzzo</h5>
+            <div class="producer">CANTINE CATALDI · 2021</div>
+            <span class="add">+</span>
+          </div>
+          <div class="m-card">
+            <span class="tag">€9,90</span>
+            <div class="ph">bag</div>
+            <h5>Caffè Napoletano</h5>
+            <div class="producer">VESUVIO · 250G</div>
+            <span class="add">+</span>
+          </div>
+          <div class="m-card">
+            <span class="tag">€6,40</span>
+            <div class="ph">pasta</div>
+            <h5>Strangozzi di farro</h5>
+            <div class="producer">SPOLETO · 500G</div>
+            <span class="add">+</span>
+          </div>
+        </div>
+        <div style="padding: 14px 18px 4px;"><div style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;">Le nostre categorie</div></div>
+        <div class="m-categories">
+          <div class="cat-card">Vini</div>
+          <div class="cat-card y">Caffè</div>
+          <div class="cat-card g">Pasta</div>
+          <div class="cat-card b">Salse</div>
+          <div class="cat-card r">Dolci</div>
+        </div>
+        <div class="divider"></div>
+        <div class="m-footer">
+          <div>
+            <span class="sun"></span>
+            <div style="font-family:'Fraunces',serif;font-size:28px;font-weight:600;">Italiamo</div>
+            <div style="font-size:12px;opacity:.7;margin-top:4px;font-family:'DM Mono',monospace;">SPEDIZIONI IL MARTEDÌ · BRATISLAVA</div>
+          </div>
+          <div><h5>Bottega</h5><div class="scribble long" style="background:#fff8ec;opacity:.4"></div><div class="scribble mid" style="background:#fff8ec;opacity:.4"></div></div>
+          <div><h5>Aiuto</h5><div class="scribble mid" style="background:#fff8ec;opacity:.4"></div><div class="scribble short" style="background:#fff8ec;opacity:.4"></div></div>
+          <div><h5>Newsletter</h5><div class="scribble long" style="background:#fff8ec;opacity:.4"></div></div>
+        </div>
+        <span class="pencil-note" style="top: 90px; right: 240px; color:#0e6e5a;">↙ illustrated citrus shapes float behind type</span>
+        <span class="pencil-note s" style="top: 510px; right: 22px; color:#1a2a6b;">→ price tags rotated -3°, sticker feel</span>
+      </div>
+
+      <!-- SHOP -->
+      <div class="frame stretch-8">
+        <div class="label">② Shop · grid</div>
+        <div class="num">/shop</div>
+        <div class="navbar">
+          <div class="brand">Italiamo</div>
+          <nav><span>BOTTEGA</span><span>STORIE</span><span>PRODUTTORI</span></nav>
+          <div class="right">IT/SK · 🧺 3</div>
+        </div>
+        <div style="padding: 18px 22px 4px;"><h2 style="font-family:'Fraunces',serif;font-weight:600;font-size:42px;margin:0;letter-spacing:-0.02em;">La bottega <em style="font-style:italic;color:#f25e3d;">— tutto.</em></h2></div>
+        <div class="chip-row" style="padding-top:14px;">
+          <span class="chip active">TUTTO · 24</span>
+          <span class="chip yellow">VINI · 8</span>
+          <span class="chip green">CAFFÈ · 4</span>
+          <span class="chip blue">PASTA · 6</span>
+          <span class="chip">SALSE · 3</span>
+          <span class="chip">DOLCI · 3</span>
+        </div>
+        <div class="m-prod-grid">
+          <div class="m-card"><span class="tag">€14,20</span><div class="ph">olio</div><h5>Olio EVO Galantino</h5><div class="producer">PUGLIA · 500ML</div><span class="add">+</span></div>
+          <div class="m-card"><span class="tag" style="background:#0e6e5a;color:#fff;">€7,10</span><div class="ph">sauce</div><h5>Sugo datterino</h5><div class="producer">PACHINO · 280G</div><span class="add">+</span></div>
+          <div class="m-card"><span class="tag" style="background:#f25e3d;color:#fff;">€8,90</span><div class="ph">cantucci</div><h5>Cantucci alle mandorle</h5><div class="producer">PRATO · 200G</div><span class="add">+</span></div>
+          <div class="m-card"><span class="tag">€18,40</span><div class="ph">wine</div><h5>Montepulciano</h5><div class="producer">CATALDI · 2021</div><span class="add">+</span></div>
+          <div class="m-card"><span class="tag">€9,90</span><div class="ph">caffè</div><h5>Caffè Napoletano</h5><div class="producer">VESUVIO · 250G</div><span class="add">+</span></div>
+          <div class="m-card"><span class="tag" style="background:#1a2a6b;color:#fff;">€6,40</span><div class="ph">pasta</div><h5>Strangozzi farro</h5><div class="producer">SPOLETO · 500G</div><span class="add">+</span></div>
+        </div>
+        <span class="pencil-note s" style="top: 188px; right: 22px;">↙ chips with offset shadow · candy-physical</span>
+      </div>
+
+      <!-- PDP -->
+      <div class="frame stretch-4">
+        <div class="label">③ Product detail</div>
+        <div class="num">/shop/[slug]</div>
+        <div class="m-pdp">
+          <div class="main-img">
+            <div class="ph">bottle png</div>
+          </div>
+          <div class="info">
+            <div class="producer">CATALDI · ABRUZZO</div>
+            <h3>Montepulciano d'Abruzzo</h3>
+            <div style="font-family:'Kalam',sans-serif;margin: 8px 0 0;">Amarena, tabacco dolce, finale lungo. <br>Vendemmia 2021.</div>
+            <div class="price-tag">€18,40</div>
+            <div style="display:flex;gap:10px;">
+              <span class="btn-candy">🧺 Aggiungi</span>
+              <span class="btn-candy alt">♡</span>
+            </div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;margin-top:18px;line-height:1.7;">
+              <div>VOLUME · 750 ML</div>
+              <div>ALCOL · 13,5%</div>
+              <div>SOLFITI · BASSI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CART -->
+      <div class="frame stretch-6">
+        <div class="label">④ Cart · "receipt"</div>
+        <div class="num">/cart</div>
+        <div class="m-cart">
+          <div class="receipt">
+            <h4>* ITALIAMO · IL TUO CESTO *</h4>
+            <div style="font-family:'DM Mono',monospace;font-size:10px;text-align:center;color:#6b5a44;margin-bottom:12px;">— 12 MAGGIO 2026 · ORDINE #4019 —</div>
+            <div class="line"><span>2× Montepulciano</span><span>€36,80</span></div>
+            <div class="line"><span>1× Caffè Napoletano</span><span>€9,90</span></div>
+            <div class="line"><span>1× Cantucci</span><span>€8,90</span></div>
+            <div class="line" style="margin-top:8px;"><span>SUBTOTALE</span><span>€55,60</span></div>
+            <div class="line"><span>SPEDIZIONE</span><span>€4,90</span></div>
+            <div class="line total" style="border-bottom:3px double #221a14;padding:10px 0;"><span>TOTALE</span><span>€60,50</span></div>
+            <div style="text-align:center;margin-top:14px;"><span class="btn-candy">VAI AL PAGAMENTO →</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="frame stretch-6">
+        <div class="label">⑤ About</div>
+        <div class="num">/about</div>
+        <div style="padding: 22px; position: relative;">
+          <div class="blob b1" style="position:absolute;right:30px;top:30px;width:90px;height:90px;border-radius:50%;background:#f4c430;border:2px solid #221a14;"></div>
+          <div style="font-family:'DM Mono',monospace; font-size:11px;letter-spacing:0.18em;">— LA NOSTRA STORIA —</div>
+          <h2 style="font-family:'Fraunces',serif;font-size:54px;font-weight:600;letter-spacing:-0.02em;margin: 8px 0 16px;line-height:0.95;">Due fratelli,<br>una <em style="font-style:italic;color:#f25e3d;">FIAT 500</em>,<br>e troppi barattoli.</h2>
+          <p style="font-family:'Kalam',sans-serif;font-size:16px;max-width:420px;">Tutto è iniziato in un viaggio in Puglia nell'estate del 2023. Siamo tornati con la macchina piena di pasta, vino e olio, e con un numero di telefono.</p>
+          <div class="m-prod-grid" style="grid-template-columns: repeat(4,1fr); padding: 16px 0 0;">
+            <div class="m-card" style="padding:8px;"><div class="ph" style="aspect-ratio:1/1;">prod1</div></div>
+            <div class="m-card" style="padding:8px;"><div class="ph" style="aspect-ratio:1/1;">prod2</div></div>
+            <div class="m-card" style="padding:8px;"><div class="ph" style="aspect-ratio:1/1;">prod3</div></div>
+            <div class="m-card" style="padding:8px;"><div class="ph" style="aspect-ratio:1/1;">prod4</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOG -->
+      <div class="frame stretch-12">
+        <div class="label">⑥ Blog · list + article</div>
+        <div class="num">/blog</div>
+        <div style="padding: 22px 22px 6px;"><h2 style="font-family:'Fraunces',serif;font-size:48px;font-weight:600;letter-spacing:-0.02em;margin:0;">Storie <em style="font-style:italic;color:#0e6e5a;">dal campo.</em></h2></div>
+        <div class="m-blog">
+          <div class="card">
+            <div class="ph">vigna</div>
+            <div class="pad">
+              <div style="font-family:'DM Mono',monospace;font-size:10px;color:#f25e3d;letter-spacing:0.1em;">№ 12 · MARZO</div>
+              <h5>Tre giorni in vigna con Cataldi</h5>
+              <div style="font-family:'Kalam',sans-serif;font-size:13px;color:#6b5a44;">Una vendemmia fatta a mano, in quattro.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ph">caffè</div>
+            <div class="pad">
+              <div style="font-family:'DM Mono',monospace;font-size:10px;color:#0e6e5a;letter-spacing:0.1em;">№ 11 · FEBBRAIO</div>
+              <h5>Perché il caffè napoletano sembra bruciato</h5>
+              <div style="font-family:'Kalam',sans-serif;font-size:13px;color:#6b5a44;">Spoiler: non lo è.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ph">olio</div>
+            <div class="pad">
+              <div style="font-family:'DM Mono',monospace;font-size:10px;color:#1a2a6b;letter-spacing:0.1em;">№ 10 · GENNAIO</div>
+              <h5>Olio nuovo, come si assaggia</h5>
+              <div style="font-family:'Kalam',sans-serif;font-size:13px;color:#6b5a44;">Pane, sale, e nient'altro.</div>
+            </div>
+          </div>
+        </div>
+        <span class="pencil-note s" style="bottom: 14px; right: 22px;">↘ each card a sticker · 3-up grid</span>
+      </div>
+
+    </div>
+
+    <div class="legend">
+      <strong>Notes</strong>
+      <div class="item"><span class="swatch-sm" style="background:#f25e3d"></span>blood-orange primary</div>
+      <div class="item"><span class="swatch-sm" style="background:#f4c430"></span>saffron tags</div>
+      <div class="item">Buttons compress on click · cards lift 2px on hover · loading state = rotating sun · curved SVG dividers between sections</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     STYLE 3 — BOTTEGA BRUTALIST
+============================================================= -->
+<section class="style-pane s-brutal" data-pane="brutal">
+  <div class="canvas">
+
+    <div class="style-intro" style="background: #ececea; border-color: #0a0a0a; border-style: solid;">
+      <div>
+        <div class="slug" style="color:#6b6b68;">style 03 / slug: ?style=bottega</div>
+        <h2 style="font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.02em;">Bottega Brutalist</h2>
+        <p>Raw industrial Italian workshop. Swiss grid discipline meets Milanese concrete. Premium through restraint, not warmth.</p>
+        <div class="palette">
+          <div class="swatch" data-hex="#ECECEA" style="background:#ECECEA"></div>
+          <div class="swatch" data-hex="#FFFFFF" style="background:#FFFFFF"></div>
+          <div class="swatch" data-hex="#0A0A0A" style="background:#0A0A0A"></div>
+          <div class="swatch" data-hex="#FF3B00" style="background:#FF3B00"></div>
+          <div class="swatch" data-hex="#6B6B68" style="background:#6B6B68"></div>
+        </div>
+      </div>
+      <div class="moodbox">
+        <div class="row">
+          <span class="moodchip">concrete</span>
+          <span class="moodchip">grid</span>
+          <span class="moodchip">monospace</span>
+          <span class="moodchip">archival</span>
+          <span class="moodchip">technical</span>
+          <span class="moodchip">severe</span>
+        </div>
+        <p style="font-family: 'DM Mono', monospace; font-size: 12px; margin-top: 10px; letter-spacing:0.04em;">"PROD-014 / TOSCANA / 2021 / 750ML / €28.00 — the spec sheet IS the design."</p>
+      </div>
+    </div>
+
+    <div class="screens">
+
+      <!-- HOME -->
+      <div class="frame stretch-12">
+        <div class="label">① HOME</div>
+        <div class="num">INDEX / [LOCALE]</div>
+        <div class="navbar">
+          <div class="brand">ITALIAMO™</div>
+          <nav><span>SHOP</span><span>PRODUCERS</span><span>JOURNAL</span><span>ABOUT</span></nav>
+          <div class="right" style="text-transform:uppercase;letter-spacing:0.18em;">IT / SK &nbsp; · &nbsp; CART [03]</div>
+        </div>
+        <div class="b-hero">
+          <div class="ph">full-bleed product photograph · bottle macro · raw</div>
+          <div class="overlay">
+            <div>PROD-014</div>
+            <div>TOSCANA / 2021</div>
+            <div>750ML / 13.5%</div>
+            <div><strong>€28.00</strong></div>
+          </div>
+          <h1>Italian<br>provisions,<br>direct.</h1>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);border-bottom:1px solid #0a0a0a;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;">
+          <div style="padding:10px 14px;border-right:1px solid #0a0a0a;background:#0a0a0a;color:#fff;">INDEX</div>
+          <div style="padding:10px 14px;border-right:1px solid #0a0a0a;">001 · WINE [8]</div>
+          <div style="padding:10px 14px;border-right:1px solid #0a0a0a;">002 · COFFEE [4]</div>
+          <div style="padding:10px 14px;border-right:1px solid #0a0a0a;">003 · PASTA [6]</div>
+          <div style="padding:10px 14px;border-right:1px solid #0a0a0a;">004 · SAUCE [3]</div>
+          <div style="padding:10px 14px;">005 · DOLCI [3]</div>
+        </div>
+        <div class="b-prod-grid" style="border-left: none;">
+          <div class="b-prod">
+            <div class="sku">014. PROD-014</div>
+            <div class="ph">bottle</div>
+            <div class="row"><div class="name">Montepulciano d'Abruzzo</div><div class="price">€18.40</div></div>
+            <div class="sku" style="color:#6b6b68;">CATALDI · ABR · 750ML</div>
+          </div>
+          <div class="b-prod">
+            <div class="sku">011. PROD-011</div>
+            <div class="ph">bag</div>
+            <div class="row"><div class="name">Caffè Napoletano</div><div class="price">€9.90</div></div>
+            <div class="sku" style="color:#6b6b68;">VESUVIO · NAP · 250G</div>
+          </div>
+          <div class="b-prod">
+            <div class="sku">008. PROD-008</div>
+            <div class="ph">pasta</div>
+            <div class="row"><div class="name">Strangozzi di farro</div><div class="price">€6.40</div></div>
+            <div class="sku" style="color:#6b6b68;">SPOLETO · UMB · 500G</div>
+          </div>
+          <div class="b-prod">
+            <div class="sku">005. PROD-005</div>
+            <div class="ph">jar</div>
+            <div class="row"><div class="name">Sugo datterino</div><div class="price">€7.10</div></div>
+            <div class="sku" style="color:#6b6b68;">PACHINO · SIC · 280G</div>
+          </div>
+        </div>
+        <div class="b-foot">
+          <div>
+            <div class="brand">ITALIAMO</div>
+            <div style="margin-top:8px;color:#7a7a78;">DIRECT IMPORT — BRATISLAVA, SK</div>
+          </div>
+          <div><h6>INDEX</h6><div class="scribble mid" style="background:#3a3a38;height:6px;"></div><div class="scribble short" style="background:#3a3a38;height:6px;"></div></div>
+          <div><h6>HELP</h6><div class="scribble mid" style="background:#3a3a38;height:6px;"></div></div>
+          <div><h6>LEGAL</h6><div class="scribble short" style="background:#3a3a38;height:6px;"></div></div>
+          <div><h6>EMAIL</h6><div class="scribble long" style="background:#3a3a38;height:6px;"></div></div>
+        </div>
+        <span class="pencil-note s" style="top: 96px; right: 22px; color:#ff3b00;">↙ monospace data block over hero</span>
+        <span class="pencil-note s" style="top: 410px; right: 22px; color:#ff3b00;">→ products separated by hairlines, no gaps</span>
+      </div>
+
+      <!-- SHOP -->
+      <div class="frame stretch-8">
+        <div class="label">② SHOP</div>
+        <div class="num">/SHOP</div>
+        <div class="navbar">
+          <div class="brand">ITALIAMO™</div>
+          <nav><span>SHOP</span><span>PRODUCERS</span><span>JOURNAL</span><span>ABOUT</span></nav>
+          <div class="right" style="text-transform:uppercase;letter-spacing:0.18em;">IT / SK · CART [03]</div>
+        </div>
+        <div style="padding: 14px 16px; border-bottom: 1px solid #0a0a0a; display: flex; justify-content: space-between; font-family:'DM Mono',monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;">
+          <span>INDEX · 24 ITEMS</span>
+          <span>SORT ↓ ORIGIN A–Z</span>
+        </div>
+        <div class="b-shop">
+          <aside class="b-side">
+            <h6>CATEGORY</h6>
+            <ul>
+              <li class="on">ALL <span class="ct">24</span></li>
+              <li>WINE <span class="ct">08</span></li>
+              <li>COFFEE <span class="ct">04</span></li>
+              <li>PASTA <span class="ct">06</span></li>
+              <li>SAUCE <span class="ct">03</span></li>
+              <li>DOLCI <span class="ct">03</span></li>
+            </ul>
+            <h6>REGION</h6>
+            <ul>
+              <li>ABRUZZO <span class="ct">03</span></li>
+              <li>SICILIA <span class="ct">05</span></li>
+              <li>TOSCANA <span class="ct">04</span></li>
+              <li>UMBRIA <span class="ct">02</span></li>
+              <li>PUGLIA <span class="ct">04</span></li>
+            </ul>
+            <h6>PRICE</h6>
+            <ul>
+              <li>€0–10 <span class="ct">11</span></li>
+              <li>€10–20 <span class="ct">09</span></li>
+              <li>€20+ <span class="ct">04</span></li>
+            </ul>
+          </aside>
+          <div class="b-prod-grid">
+            <div class="b-prod"><div class="sku">001.</div><div class="ph">a</div><div class="row"><div class="name">Olio EVO Galantino</div><div class="price">€14.20</div></div><div class="sku" style="color:#6b6b68;">PUG · 500ML</div></div>
+            <div class="b-prod"><div class="sku">002.</div><div class="ph">b</div><div class="row"><div class="name">Caffè Vesuvio</div><div class="price">€9.90</div></div><div class="sku" style="color:#6b6b68;">NAP · 250G</div></div>
+            <div class="b-prod"><div class="sku">003.</div><div class="ph">c</div><div class="row"><div class="name">Sugo datterino</div><div class="price">€7.10</div></div><div class="sku" style="color:#6b6b68;">SIC · 280G</div></div>
+            <div class="b-prod"><div class="sku">004.</div><div class="ph">d</div><div class="row"><div class="name">Cantucci</div><div class="price">€8.90</div></div><div class="sku" style="color:#6b6b68;">TOS · 200G</div></div>
+            <div class="b-prod"><div class="sku">005.</div><div class="ph">e</div><div class="row"><div class="name">Montepulciano</div><div class="price">€18.40</div></div><div class="sku" style="color:#6b6b68;">ABR · 750ML</div></div>
+            <div class="b-prod"><div class="sku">006.</div><div class="ph">f</div><div class="row"><div class="name">Strangozzi</div><div class="price">€6.40</div></div><div class="sku" style="color:#6b6b68;">UMB · 500G</div></div>
+            <div class="b-prod"><div class="sku">007.</div><div class="ph">g</div><div class="row"><div class="name">Brunello</div><div class="price">€42.00</div></div><div class="sku" style="color:#6b6b68;">TOS · 750ML</div></div>
+            <div class="b-prod"><div class="sku">008.</div><div class="ph">h</div><div class="row"><div class="name">Pesto Genovese</div><div class="price">€6.80</div></div><div class="sku" style="color:#6b6b68;">LIG · 180G</div></div>
+          </div>
+        </div>
+        <span class="pencil-note s" style="bottom: 14px; left: 18px; color:#ff3b00;">↳ sidebar filters · monospace counts</span>
+      </div>
+
+      <!-- PDP -->
+      <div class="frame stretch-4">
+        <div class="label">③ PDP</div>
+        <div class="num">/SHOP/[SLUG]</div>
+        <div class="b-pdp">
+          <div class="left">
+            <div class="ph">main image · macro</div>
+          </div>
+          <div class="right">
+            <div class="sku">PROD-014</div>
+            <h3>Montepulciano d'Abruzzo</h3>
+            <div style="font-family:'DM Mono',monospace;font-size:14px;font-weight:500;">€18.40</div>
+            <dl>
+              <dt>PRODUCER</dt><dd>CATALDI</dd>
+              <dt>ORIGIN</dt><dd>ABRUZZO, IT</dd>
+              <dt>VINTAGE</dt><dd>2021</dd>
+              <dt>VOLUME</dt><dd>750 ML</dd>
+              <dt>ABV</dt><dd>13.5%</dd>
+              <dt>UNIT</dt><dd>€24.53 / L</dd>
+            </dl>
+            <span class="b-btn">ADD TO CART →</span>
+          </div>
+        </div>
+        <span class="pencil-note s" style="bottom: 110px; right: 22px; color:#ff3b00;">→ hover swaps for label macro</span>
+      </div>
+
+      <!-- CART -->
+      <div class="frame stretch-6">
+        <div class="label">④ CART · "manifest"</div>
+        <div class="num">/CART</div>
+        <div class="manifest">
+          <h4>SHIPPING MANIFEST · ORDER #4019 · 12.05.26</h4>
+          <table>
+            <thead><tr><th>SKU</th><th>ITEM</th><th class="r">QTY</th><th class="r">UNIT</th><th class="r">TOTAL</th></tr></thead>
+            <tbody>
+              <tr><td>014</td><td>MONTEPULCIANO D'ABRUZZO</td><td class="r">2</td><td class="r">18.40</td><td class="r">36.80</td></tr>
+              <tr><td>011</td><td>CAFFÈ NAPOLETANO 250G</td><td class="r">1</td><td class="r">9.90</td><td class="r">9.90</td></tr>
+              <tr><td>008</td><td>CANTUCCI MANDORLE</td><td class="r">1</td><td class="r">8.90</td><td class="r">8.90</td></tr>
+              <tr><td></td><td>SUBTOTAL</td><td class="r"></td><td class="r"></td><td class="r">55.60</td></tr>
+              <tr><td></td><td>SHIPPING</td><td class="r"></td><td class="r"></td><td class="r">4.90</td></tr>
+              <tr class="tot"><td></td><td>TOTAL · EUR</td><td class="r"></td><td class="r"></td><td class="r">€60.50</td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:14px;text-align:right;"><span class="b-btn">PROCEED TO CHECKOUT →</span></div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="frame stretch-6">
+        <div class="label">⑤ ABOUT</div>
+        <div class="num">/ABOUT</div>
+        <div class="b-about">
+          <div class="ph">portrait</div>
+          <div class="right">
+            <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.22em;color:#ff3b00;text-transform:uppercase;">EST. 2024 · BRATISLAVA</div>
+            <h3>About the importer.</h3>
+            <p>Italiamo is a one-room operation in Bratislava, founded in 2024 by Tomáš Mičko. We work direct with 18 small Italian producers across 7 regions.</p>
+            <p>No distributors. No category managers. No promotions.</p>
+            <p>One delivery per producer per month, by van.</p>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;margin-top:14px;border-top:1px solid #0a0a0a;padding-top:10px;line-height:1.7;">
+              <div>PRODUCERS · 18</div>
+              <div>REGIONS · 7</div>
+              <div>SKUS · 24</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOG -->
+      <div class="frame stretch-12">
+        <div class="label">⑥ JOURNAL · listing</div>
+        <div class="num">/JOURNAL</div>
+        <div class="b-blog">
+          <div class="row"><span>№</span><span>TITLE</span><span>TOPIC</span><span class="r">DATE</span></div>
+          <div class="row"><span>12</span><span class="title">A harvest, by hand, in four. — three days with Cataldi in Abruzzo</span><span>VINEYARD</span><span class="r">03.26</span></div>
+          <div class="row"><span>11</span><span class="title">Why Naples coffee tastes burnt (it isn't)</span><span>COFFEE</span><span class="r">02.26</span></div>
+          <div class="row"><span>10</span><span class="title">New olive oil: how to taste it</span><span>OIL</span><span class="r">01.26</span></div>
+          <div class="row"><span>09</span><span class="title">Spelt pasta of Spoleto</span><span>PASTA</span><span class="r">12.25</span></div>
+          <div class="row"><span>08</span><span class="title">Datterino tomato — a defense</span><span>SAUCE</span><span class="r">11.25</span></div>
+        </div>
+        <span class="pencil-note s" style="bottom: 14px; right: 22px; color:#ff3b00;">↘ blog as tabular index · no thumbnails on list</span>
+      </div>
+
+    </div>
+
+    <div class="legend">
+      <strong>Notes</strong>
+      <div class="item"><span class="swatch-sm" style="background:#0a0a0a"></span>true black ink</div>
+      <div class="item"><span class="swatch-sm" style="background:#ff3b00"></span>signal red (data highlights only)</div>
+      <div class="item">Page transitions: hard cut, brief monospace route label flashes top-left · all hover states step, not eased · no shadows · max radius 2px</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     STYLE 4 — OFFICINA / 2099  (brutalist futurist)
+============================================================= -->
+<section class="style-pane s-futurist" data-pane="futurist">
+  <div class="canvas">
+
+    <div class="style-intro">
+      <div>
+        <div class="slug">style 04 / slug: ?style=officina</div>
+        <h2>Officina<br><em>/ 2099</em></h2>
+        <p>Italian provisions, transmitted from the future. Brutalist grid discipline meets terminal-UI and architectural schematic. Black panels, mono everywhere, electric lime where it matters.</p>
+        <div class="palette">
+          <div class="swatch" data-hex="#0A0B0C" style="background:#0A0B0C"></div>
+          <div class="swatch" data-hex="#131418" style="background:#131418"></div>
+          <div class="swatch" data-hex="#E8E5D5" style="background:#E8E5D5"></div>
+          <div class="swatch" data-hex="#C8FF2A" style="background:#C8FF2A"></div>
+          <div class="swatch" data-hex="#FF5230" style="background:#FF5230"></div>
+        </div>
+      </div>
+      <div class="moodbox">
+        <div class="row">
+          <span class="moodchip">terminal</span>
+          <span class="moodchip">schematic</span>
+          <span class="moodchip">telemetry</span>
+          <span class="moodchip">blueprint</span>
+          <span class="moodchip">archival</span>
+          <span class="moodchip">night-shift</span>
+        </div>
+        <p style="font-family: 'Space Mono', monospace; font-size: 12px; margin-top: 10px; color:#c8c5b8;">"// SPECIMEN 014 // CATALDI / ABR / 48.14°N 17.10°E // batch 21·09·25 // ready for transmission."</p>
+      </div>
+    </div>
+
+    <div class="screens">
+
+      <!-- HOME -->
+      <div class="frame stretch-12">
+        <div class="label">① HOME</div>
+        <div class="num">INDEX / [LOCALE]</div>
+        <div class="navbar">
+          <div class="brand">ITALIAMO/SYS</div>
+          <nav><span>shop</span><span>producers</span><span>journal</span><span>about</span></nav>
+          <div class="right"><span>SK</span><span class="live">LIVE</span><span>CART [03]</span></div>
+        </div>
+        <div class="sysbar">
+          <span class="ok">SYS · ONLINE</span>
+          <span>NODE · BTS-01 / 48.14°N 17.10°E</span>
+          <span>UPLINK · 18 PRODUCERS / 7 REGIONI</span>
+          <span>TX · 12.05.26 · 14:32 UTC+1</span>
+          <span>v2.4.1</span>
+          <span style="margin-left:auto;border-right:none;">// READ ME</span>
+        </div>
+        <div class="f-hero">
+          <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.18em;color:#c8ff2a;">// TRANSMISSION 014 · primavera 2026</div>
+          <h1>Italian<br>provisions<span class="slash">,</span><br><em>direct.</em><span class="cursor"></span></h1>
+          <div class="sub">// 18 small producers · 7 regions · zero distributors · one delivery cycle per producer per month. Spedizione il martedì.</div>
+          <div style="margin-top: 22px; display:flex; gap: 8px;">
+            <span class="f-btn">enter shop</span>
+            <span class="f-btn ghost">producers map</span>
+          </div>
+          <div class="specimen"></div>
+          <span class="callout" style="right: 32px; top: 88px;"><span class="ln" style="width:54px;"></span>H · 295MM</span>
+          <span class="callout" style="right: 32px; top: 168px;"><span class="ln" style="width:54px;"></span>VOL · 750ML</span>
+          <span class="callout" style="right: 32px; top: 244px;"><span class="ln" style="width:54px;"></span>€18.40 · 13.5%</span>
+          <span class="callout" style="right: 32px; top: 320px;"><span class="ln" style="width:54px;"></span>BATCH 21-09-25</span>
+        </div>
+
+        <div class="module-h"><span class="t">live inventory</span><span>24 specimens · sorted by origin ↓</span></div>
+        <div class="f-grid4">
+          <div class="f-card">
+            <div class="id">014. PROD-014</div>
+            <div class="pic">bottle</div>
+            <div class="name">Montepulciano d'Abruzzo</div>
+            <div class="meta"><span>CATALDI · ABR</span><span class="price">€18.40</span></div>
+            <div class="telem">VINTAGE <span class="v">2021</span> · 750ML · STOCK <span class="v">42</span></div>
+          </div>
+          <div class="f-card">
+            <div class="id">011. PROD-011</div>
+            <div class="pic">bag</div>
+            <div class="name">Caffè Napoletano</div>
+            <div class="meta"><span>VESUVIO · NAP</span><span class="price">€9.90</span></div>
+            <div class="telem">ROAST <span class="v">SCURO</span> · 250G · STOCK <span class="v">88</span></div>
+          </div>
+          <div class="f-card">
+            <div class="id">008. PROD-008</div>
+            <div class="pic">pasta</div>
+            <div class="name">Strangozzi farro</div>
+            <div class="meta"><span>SPOLETO · UMB</span><span class="price">€6.40</span></div>
+            <div class="telem">GRANO <span class="v">FARRO</span> · 500G · STOCK <span class="v">120</span></div>
+          </div>
+          <div class="f-card">
+            <div class="id">005. PROD-005</div>
+            <div class="pic">jar</div>
+            <div class="name">Sugo datterino</div>
+            <div class="meta"><span>PACHINO · SIC</span><span class="price">€7.10</span></div>
+            <div class="telem">HARVEST <span class="v">AGO-25</span> · 280G · STOCK <span class="v">06 ⚠</span></div>
+          </div>
+        </div>
+
+        <div class="module-h"><span class="t">producer telemetry</span><span>last sync 14:32</span></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #1f2026;font-family:'Space Mono',monospace;font-size:11px;">
+          <div style="padding:14px;border-right:1px solid #1f2026;border-bottom:1px solid #1f2026;">
+            <div style="color:#c8ff2a;">▸ CANTINE CATALDI</div>
+            <div style="color:#7a7870;margin-top:6px;line-height:1.6;">42.46°N · 14.21°E<br>Abruzzo · 1,184 km<br>last delivery · 28.04.26</div>
+          </div>
+          <div style="padding:14px;border-right:1px solid #1f2026;border-bottom:1px solid #1f2026;">
+            <div style="color:#c8ff2a;">▸ TORREF. VESUVIO</div>
+            <div style="color:#7a7870;margin-top:6px;line-height:1.6;">40.85°N · 14.27°E<br>Napoli · 1,350 km<br>last delivery · 05.05.26</div>
+          </div>
+          <div style="padding:14px;border-bottom:1px solid #1f2026;">
+            <div style="color:#c8ff2a;">▸ MOLINO SPOLETINO</div>
+            <div style="color:#7a7870;margin-top:6px;line-height:1.6;">42.74°N · 12.74°E<br>Umbria · 1,108 km<br>last delivery · 21.04.26</div>
+          </div>
+        </div>
+
+        <div class="f-foot">
+          <div>
+            <div class="brand">ITALIAMO</div>
+            <div class="end">transmission ends · v2.4.1 · 2026</div>
+          </div>
+          <div><h6>// INDEX</h6><div class="scribble" style="width:80%;"></div><div class="scribble" style="width:60%;margin-top:4px;"></div></div>
+          <div><h6>// SUPPORT</h6><div class="scribble" style="width:70%;"></div></div>
+          <div><h6>// UPLINK</h6><div class="scribble" style="width:90%;"></div></div>
+        </div>
+        <span class="pencil-note" style="top: 240px; right: 32%;">↙ measurement callouts on specimen</span>
+        <span class="pencil-note s" style="top: 64px; right: 16px;">→ system status strip · always visible</span>
+      </div>
+
+      <!-- SHOP -->
+      <div class="frame stretch-8">
+        <div class="label">② SHOP</div>
+        <div class="num">/SHOP</div>
+        <div class="navbar">
+          <div class="brand">ITALIAMO/SYS</div>
+          <nav><span>shop</span><span>producers</span><span>journal</span></nav>
+          <div class="right"><span class="live">LIVE</span><span>CART [03]</span></div>
+        </div>
+        <div class="sysbar">
+          <span class="ok">QUERY · OK</span>
+          <span>RESULTS · 24 / 24</span>
+          <span>SORT · ORIGIN ↓</span>
+          <span style="margin-left:auto;border-right:none;color:#c8ff2a;">$ shop --all</span>
+        </div>
+        <div class="f-shop">
+          <aside class="f-side">
+            <div class="prompt">filter --interactive</div>
+            <h6>// CATEGORY</h6>
+            <ul>
+              <li class="on">ALL <span class="ct">24</span></li>
+              <li>WINE <span class="ct">08</span></li>
+              <li>COFFEE <span class="ct">04</span></li>
+              <li>PASTA <span class="ct">06</span></li>
+              <li>SAUCE <span class="ct">03</span></li>
+              <li>DOLCI <span class="ct">03</span></li>
+            </ul>
+            <h6>// REGION</h6>
+            <ul>
+              <li>ABRUZZO <span class="ct">03</span></li>
+              <li>SICILIA <span class="ct">05</span></li>
+              <li>TOSCANA <span class="ct">04</span></li>
+              <li>UMBRIA <span class="ct">02</span></li>
+              <li>PUGLIA <span class="ct">04</span></li>
+            </ul>
+            <h6>// PRICE / €</h6>
+            <ul>
+              <li>00 — 10 <span class="ct">11</span></li>
+              <li>10 — 20 <span class="ct">09</span></li>
+              <li>20 + <span class="ct">04</span></li>
+            </ul>
+          </aside>
+          <div class="f-grid4" style="border-top:none;">
+            <div class="f-card"><div class="id">001.</div><div class="pic">a</div><div class="name">Olio EVO Galantino</div><div class="meta"><span>PUG · 500ML</span><span class="price">€14.20</span></div></div>
+            <div class="f-card"><div class="id">002.</div><div class="pic">b</div><div class="name">Caffè Vesuvio</div><div class="meta"><span>NAP · 250G</span><span class="price">€9.90</span></div></div>
+            <div class="f-card"><div class="id">003.</div><div class="pic">c</div><div class="name">Sugo datterino</div><div class="meta"><span>SIC · 280G</span><span class="price">€7.10</span></div></div>
+            <div class="f-card"><div class="id">004.</div><div class="pic">d</div><div class="name">Cantucci</div><div class="meta"><span>TOS · 200G</span><span class="price">€8.90</span></div></div>
+            <div class="f-card"><div class="id">005.</div><div class="pic">e</div><div class="name">Montepulciano</div><div class="meta"><span>ABR · 750ML</span><span class="price">€18.40</span></div></div>
+            <div class="f-card"><div class="id">006.</div><div class="pic">f</div><div class="name">Strangozzi</div><div class="meta"><span>UMB · 500G</span><span class="price">€6.40</span></div></div>
+            <div class="f-card"><div class="id">007.</div><div class="pic">g</div><div class="name">Brunello</div><div class="meta"><span>TOS · 750ML</span><span class="price">€42.00</span></div></div>
+            <div class="f-card"><div class="id">008.</div><div class="pic">h</div><div class="name">Pesto Genovese</div><div class="meta"><span>LIG · 180G</span><span class="price">€6.80</span></div></div>
+          </div>
+        </div>
+        <span class="pencil-note s" style="bottom: 14px; left: 18px;">↳ filter sidebar reads like a CLI flag</span>
+      </div>
+
+      <!-- PDP -->
+      <div class="frame stretch-4">
+        <div class="label">③ PDP</div>
+        <div class="num">/SHOP/[SLUG]</div>
+        <div class="f-pdp">
+          <div class="left">
+            <div class="holder">specimen.png</div>
+            <span class="callout" style="left: 18px; top: 30px;">▸ H · 295MM</span>
+            <span class="callout" style="left: 18px; bottom: 90px;">▸ D · 75MM</span>
+            <span class="callout" style="right: 18px; top: 60px;">B# 21-09-25 ◂</span>
+            <span class="callout" style="right: 18px; bottom: 60px;">PROD-014 ◂</span>
+          </div>
+          <div class="right">
+            <div class="id">▸ PROD-014 // ABR-21</div>
+            <h3>Montepulciano d'Abruzzo</h3>
+            <div class="price-row">
+              <div style="color:#7a7870;">// price</div>
+              <div class="price">€18.40</div>
+            </div>
+            <dl>
+              <dt>producer</dt><dd>CATALDI</dd>
+              <dt>origin</dt><dd>ABRUZZO · 42.46°N 14.21°E</dd>
+              <dt>vintage</dt><dd>2021 · vendemmia 14.09</dd>
+              <dt>volume</dt><dd>750 ml</dd>
+              <dt>abv</dt><dd>13.5 %</dd>
+              <dt>unit</dt><dd>€24.53 / L</dd>
+              <dt>stock</dt><dd style="color:#c8ff2a;">42 · IN MAGAZZINO</dd>
+            </dl>
+            <span class="f-btn">add to cart</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CART -->
+      <div class="frame stretch-6">
+        <div class="label">④ CART · terminal</div>
+        <div class="num">/CART</div>
+        <div class="f-cart">
+          <div class="prompt">cat ./cart.manifest</div>
+<pre>
+<span class="mute">┌──────────────────────────────────────────────────────────────┐
+│  ITALIAMO/SYS · ORDER #4019 · 12.05.26 14:32 UTC+1            │
+└──────────────────────────────────────────────────────────────┘</span>
+
+  SKU    ITEM                          QTY   UNIT      TOTAL
+  ───    ───────────────────────────   ───   ─────     ──────
+  <span class="lime">014</span>    MONTEPULCIANO D'ABRUZZO         2   18.40      36.80
+  <span class="lime">011</span>    CAFFÈ NAPOLETANO 250G           1    9.90       9.90
+  <span class="lime">008</span>    CANTUCCI MANDORLE               1    8.90       8.90
+                                                       ──────
+                                       SUBTOTAL        55.60
+                                       SHIPPING         4.90
+                                                       ══════
+                                       <span class="lime">TOTAL · EUR    60.50</span>
+
+  <span class="mute">// next delivery window · martedì 19.05.26</span>
+  <span class="mute">// shipping · GLS / SK · tracked</span>
+</pre>
+          <div class="prompt" style="margin-top: 14px;">checkout --proceed</div>
+          <span class="f-btn" style="margin-top: 6px;">execute checkout →</span>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="frame stretch-6">
+        <div class="label">⑤ ABOUT · schematic</div>
+        <div class="num">/ABOUT</div>
+        <div class="f-about">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.22em;color:#c8ff2a;">// EST. 2024 · NODE BTS-01</div>
+          <h3>One room.<br>Eighteen<br><em>producers.</em></h3>
+          <p>Italiamo is a single-node operation in Bratislava. Direct line to 18 small Italian producers. Zero distributors. One delivery cycle per producer per month, by van.</p>
+          <div class="schematic">
+            <h6>// SUPPLY CHAIN · v2.4</h6>
+<pre>
+  <span class="lime">[ ABRUZZO ]</span>──────┐
+                  │
+  <span class="lime">[ SICILIA ]</span>──────┤
+                  ├──▶  <span class="lime">[ BRATISLAVA · BTS-01 ]</span>  ──▶  <span class="lime">[ YOU ]</span>
+  <span class="lime">[ TOSCANA ]</span>──────┤            no intermediary nodes
+                  │
+  <span class="lime">[ UMBRIA  ]</span>──────┤
+                  │
+  <span class="lime">[ PUGLIA  ]</span>──────┘
+</pre>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;color:#7a7870;">
+            <div><div style="color:#c8ff2a;font-family:'Big Shoulders Display';font-size:36px;font-weight:900;line-height:1;">18</div>PRODUCERS</div>
+            <div><div style="color:#c8ff2a;font-family:'Big Shoulders Display';font-size:36px;font-weight:900;line-height:1;">07</div>REGIONI</div>
+            <div><div style="color:#c8ff2a;font-family:'Big Shoulders Display';font-size:36px;font-weight:900;line-height:1;">24</div>SPECIMENS</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOG -->
+      <div class="frame stretch-12">
+        <div class="label">⑥ JOURNAL · log</div>
+        <div class="num">/JOURNAL</div>
+        <div class="module-h"><span class="t">field log · campo / cantina / cucina</span><span>12 entries · since 2024</span></div>
+        <div class="f-blog">
+          <div class="row"><span>N°</span><span>TITLE</span><span>TOPIC</span><span class="date">DATE</span></div>
+          <div class="row"><span class="ix">012</span><span class="title">Three days with Cataldi — vendemmia by hand</span><span class="tag">VINEYARD</span><span class="date">03.26</span></div>
+          <div class="row"><span class="ix">011</span><span class="title">Naples coffee tastes burnt (it isn't)</span><span class="tag">COFFEE</span><span class="date">02.26</span></div>
+          <div class="row"><span class="ix">010</span><span class="title">New olive oil · how to taste</span><span class="tag">OIL</span><span class="date">01.26</span></div>
+          <div class="row"><span class="ix">009</span><span class="title">Spelt pasta of Spoleto</span><span class="tag">PASTA</span><span class="date">12.25</span></div>
+          <div class="row"><span class="ix">008</span><span class="title">Datterino tomato · a defense</span><span class="tag">SAUCE</span><span class="date">11.25</span></div>
+        </div>
+        <span class="pencil-note s" style="bottom: 14px; right: 22px;">↘ journal reads like a changelog</span>
+      </div>
+
+    </div>
+
+    <div class="legend" style="background:#0a0b0c;color:#e8e5d5;border-color:#1f2026;">
+      <strong style="color:#c8ff2a;">// NOTES</strong>
+      <div class="item"><span class="swatch-sm" style="background:#c8ff2a"></span>electric lime (price · live data · CTA)</div>
+      <div class="item"><span class="swatch-sm" style="background:#ff5230"></span>warn red (low stock · errors)</div>
+      <div class="item">Every screen has a system status strip · cursors blink · measurement callouts on key imagery · cart and about render as terminal/schematic</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     STYLE 5 — ARANCIATA  (friendly · light · orange + green + white)
+============================================================= -->
+<section class="style-pane s-fresca" data-pane="fresca">
+  <div class="canvas">
+
+    <div class="style-intro">
+      <div>
+        <div class="slug">style 05 / slug: ?style=aranciata</div>
+        <h2>Aranciata <em>fresca.</em></h2>
+        <p>Modern, warm and welcoming. White and cream surfaces, soft rounded UI, orange and basil-green accents. A friendly Italian voice — no jargon, no terminal.</p>
+        <div class="palette">
+          <div class="swatch" data-hex="#FFFEFB" style="background:#FFFEFB"></div>
+          <div class="swatch" data-hex="#FBF6EB" style="background:#FBF6EB"></div>
+          <div class="swatch" data-hex="#EE6A2C" style="background:#EE6A2C"></div>
+          <div class="swatch" data-hex="#2D8559" style="background:#2D8559"></div>
+          <div class="swatch" data-hex="#2A2620" style="background:#2A2620"></div>
+        </div>
+      </div>
+      <div class="moodbox">
+        <div class="row">
+          <span class="moodchip">soleggiato</span>
+          <span class="moodchip">caloroso</span>
+          <span class="moodchip">amichevole</span>
+          <span class="moodchip">leggero</span>
+          <span class="moodchip">conviviale</span>
+          <span class="moodchip">curato</span>
+        </div>
+        <p style="font-family:'DM Sans',sans-serif; font-size: 14px; margin-top: 10px; color:#4a4338;">"Like a Saturday morning at the market — bright, generous, easy to be around. Le storie dei produttori, il prezzo chiaro, e basta."</p>
+      </div>
+    </div>
+
+    <div class="screens">
+
+      <!-- HOME -->
+      <div class="frame stretch-12">
+        <div class="label">① Home</div>
+        <div class="num">/[locale]/</div>
+        <div class="ribbon">
+          <span>Spedizione il martedì in tutta la Slovacchia</span>
+          <span class="dot"></span>
+          <span><b>Gratis sopra €60</b></span>
+          <span class="dot"></span>
+          <span>Pacco curato a mano a Bratislava</span>
+        </div>
+        <div class="navbar">
+          <div class="brand">Italiamo</div>
+          <nav><span>Bottega</span><span>Storia</span><span>Produttori</span><span>Diario</span></nav>
+          <div class="right"><span>IT / SK</span><span class="cart-pill">🧺 Cesto · 3</span></div>
+        </div>
+        <div class="a-hero">
+          <div>
+            <div class="eyebrow">Novità di primavera</div>
+            <h1>Sapori italiani,<br>direttamente<br>da chi <em>li fa.</em></h1>
+            <p>Vini, paste, caffè e salse di 18 piccoli produttori italiani. Nessun intermediario, nessuna catena lunga — solo un furgone bianco che parte ogni martedì.</p>
+            <div class="cta">
+              <span class="a-btn lg">Sfoglia la bottega →</span>
+              <span class="a-btn ghost lg">Conosci i produttori</span>
+            </div>
+          </div>
+          <div class="picture">
+            <span>foto prodotto · trasparente</span>
+            <div class="badge">Novità</div>
+          </div>
+        </div>
+
+        <div class="a-section">
+          <h2>Le nostre <em>categorie</em></h2>
+          <span class="link">Tutto in bottega →</span>
+        </div>
+        <div class="cat-row">
+          <div class="cat-card"><div class="circle"></div><div class="name">Vini</div><div class="ct">8 referenze</div></div>
+          <div class="cat-card green"><div class="circle"></div><div class="name">Caffè</div><div class="ct">4 referenze</div></div>
+          <div class="cat-card yellow"><div class="circle"></div><div class="name">Pasta</div><div class="ct">6 referenze</div></div>
+          <div class="cat-card cream"><div class="circle"></div><div class="name">Salse</div><div class="ct">3 referenze</div></div>
+          <div class="cat-card peach"><div class="circle"></div><div class="name">Dolci</div><div class="ct">3 referenze</div></div>
+        </div>
+
+        <div class="a-section">
+          <h2>Questa <em>settimana</em></h2>
+          <span class="link">Vedi tutti →</span>
+        </div>
+        <div class="a-grid3">
+          <div class="a-card">
+            <div class="pic"><span class="tag">Novità</span>foto · Montepulciano</div>
+            <div class="name">Montepulciano d'Abruzzo, 2021</div>
+            <div class="producer">Cantine Cataldi · Abruzzo</div>
+            <div class="fresh">Arrivato il 28 aprile</div>
+            <div class="row"><span class="price">€18,40</span><span class="add">+</span></div>
+          </div>
+          <div class="a-card">
+            <div class="pic"><span class="tag green">Best seller</span>foto · Caffè</div>
+            <div class="name">Caffè Napoletano, miscela bar</div>
+            <div class="producer">Vesuvio · Napoli</div>
+            <div class="fresh">Tostato fresco · 250 g</div>
+            <div class="row"><span class="price">€9,90</span><span class="add">+</span></div>
+          </div>
+          <div class="a-card">
+            <div class="pic"><span class="tag yellow">Solo 6</span>foto · Pomodoro</div>
+            <div class="name">Sugo di pomodoro datterino</div>
+            <div class="producer">Pachino · Sicilia</div>
+            <div class="fresh">Raccolto ad agosto</div>
+            <div class="row"><span class="price">€7,10</span><span class="add">+</span></div>
+          </div>
+        </div>
+
+        <div class="a-section">
+          <h2>Dal <em>diario</em></h2>
+          <span class="link">Leggi tutto →</span>
+        </div>
+        <div class="a-blog">
+          <div class="grid">
+            <div class="card lead">
+              <div class="pic">foto · vigna al tramonto</div>
+              <div class="pad">
+                <span class="kicker">Marzo · cantina</span>
+                <h4>Tre giorni in vigna con Cataldi — una vendemmia in quattro mani.</h4>
+                <p class="excerpt">A Pescara si arriva di notte e si parte all'alba. Le casse sono blu, le mani sono quattro. La giornata comincia presto e finisce a tavola.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="pic">foto · tazzina</div>
+              <div class="pad">
+                <span class="kicker">Febbraio · caffè</span>
+                <h4>Il caffè napoletano sembra bruciato (ma non lo è).</h4>
+              </div>
+            </div>
+            <div class="card">
+              <div class="pic">foto · olio</div>
+              <div class="pad">
+                <span class="kicker">Gennaio · olio</span>
+                <h4>Olio nuovo: come si assaggia in tre passaggi.</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="a-foot">
+          <div>
+            <div class="brand">Italiamo</div>
+            <div class="signoff">Un'importazione piccola e curata, da Bratislava.</div>
+            <div style="margin-top:14px;">
+              <div style="font-size:13px;color:#c8c0b0;margin-bottom:6px;">Iscriviti alle storie:</div>
+              <div class="news-row">
+                <input placeholder="la tua email" />
+                <span class="a-btn">Iscriviti</span>
+              </div>
+            </div>
+          </div>
+          <div><h6>Bottega</h6><div class="scribble" style="width:70%;"></div><div class="scribble" style="width:55%;margin-top:4px;"></div><div class="scribble" style="width:60%;margin-top:4px;"></div></div>
+          <div><h6>Aiuto</h6><div class="scribble" style="width:60%;"></div><div class="scribble" style="width:80%;margin-top:4px;"></div></div>
+          <div><h6>Lingua</h6><div style="display:flex;gap:8px;"><span style="background:#fff;color:var(--a-ink);padding:4px 12px;border-radius:999px;font-size:12px;font-weight:500;">Italiano</span><span style="padding:4px 12px;border:1px solid #4a443a;border-radius:999px;font-size:12px;color:#d8d3c8;">Slovencina</span></div></div>
+        </div>
+        <span class="pencil-note" style="top: 90px; right: 30%;">↙ friendly delivery ribbon · always visible</span>
+        <span class="pencil-note s" style="top: 380px; right: 22px;">→ "questa settimana" feels personal, not algo</span>
+      </div>
+
+      <!-- SHOP -->
+      <div class="frame stretch-8">
+        <div class="label">② Shop</div>
+        <div class="num">/shop</div>
+        <div class="navbar">
+          <div class="brand">Italiamo</div>
+          <nav><span>Bottega</span><span>Storia</span><span>Produttori</span></nav>
+          <div class="right"><span>IT / SK</span><span class="cart-pill">Cesto · 3</span></div>
+        </div>
+        <div style="padding: 20px 22px 4px;">
+          <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:36px;margin:0;letter-spacing:-0.025em;">In <em style="font-style:italic;font-weight:400;">bottega.</em></h2>
+          <div style="font-family:'DM Sans',sans-serif;font-size:14px;color:#8b8275;margin-top:4px;">24 prodotti · 18 produttori · 7 regioni</div>
+        </div>
+        <div class="a-shop">
+          <aside class="a-side">
+            <h6>Categoria</h6>
+            <ul>
+              <li class="on">Tutto <span class="ct">24</span></li>
+              <li>Vini <span class="ct">8</span></li>
+              <li>Caffè <span class="ct">4</span></li>
+              <li>Pasta <span class="ct">6</span></li>
+              <li>Salse <span class="ct">3</span></li>
+              <li>Dolci <span class="ct">3</span></li>
+            </ul>
+            <h6>Regione</h6>
+            <ul>
+              <li>Abruzzo <span class="ct">3</span></li>
+              <li>Sicilia <span class="ct">5</span></li>
+              <li>Toscana <span class="ct">4</span></li>
+              <li>Umbria <span class="ct">2</span></li>
+              <li>Puglia <span class="ct">4</span></li>
+            </ul>
+            <h6>Prezzo</h6>
+            <ul>
+              <li>Fino a €10 <span class="ct">11</span></li>
+              <li>€10 – €20 <span class="ct">9</span></li>
+              <li>€20 e oltre <span class="ct">4</span></li>
+            </ul>
+          </aside>
+          <div class="a-grid3" style="padding: 18px;">
+            <div class="a-card"><div class="pic"><span class="tag">Novità</span>olio</div><div class="name">Olio EVO Galantino</div><div class="producer">Bisceglie · Puglia</div><div class="fresh">500 ml · spremitura fredda</div><div class="row"><span class="price">€14,20</span><span class="add">+</span></div></div>
+            <div class="a-card"><div class="pic"><span class="tag green">Top</span>sugo</div><div class="name">Sugo datterino</div><div class="producer">Pachino · Sicilia</div><div class="fresh">280 g · solo agosto</div><div class="row"><span class="price">€7,10</span><span class="add">+</span></div></div>
+            <div class="a-card"><div class="pic">cantucci</div><div class="name">Cantucci alle mandorle</div><div class="producer">Prato · Toscana</div><div class="fresh">200 g</div><div class="row"><span class="price">€8,90</span><span class="add">+</span></div></div>
+            <div class="a-card"><div class="pic">vino</div><div class="name">Montepulciano d'Abruzzo</div><div class="producer">Cataldi · 2021</div><div class="fresh">750 ml · 13,5%</div><div class="row"><span class="price">€18,40</span><span class="add">+</span></div></div>
+            <div class="a-card"><div class="pic"><span class="tag green">Best</span>caffè</div><div class="name">Caffè Napoletano</div><div class="producer">Vesuvio · Napoli</div><div class="fresh">250 g</div><div class="row"><span class="price">€9,90</span><span class="add">+</span></div></div>
+            <div class="a-card"><div class="pic">pasta</div><div class="name">Strangozzi di farro</div><div class="producer">Spoleto · Umbria</div><div class="fresh">500 g</div><div class="row"><span class="price">€6,40</span><span class="add">+</span></div></div>
+          </div>
+        </div>
+        <span class="pencil-note s" style="top: 64px; right: 22px;">→ friendly filter · radio-dot, no checkboxes</span>
+      </div>
+
+      <!-- PDP -->
+      <div class="frame stretch-4">
+        <div class="label">③ Product</div>
+        <div class="num">/shop/[slug]</div>
+        <div class="a-pdp" style="grid-template-columns: 1fr;">
+          <div class="gallery">
+            <div class="main">foto principale</div>
+            <div class="thumbs">
+              <div class="t active">1</div><div class="t">2</div><div class="t">3</div><div class="t">4</div>
+            </div>
+          </div>
+          <div class="info">
+            <div class="producer">Cantine Cataldi · Abruzzo</div>
+            <h3>Montepulciano d'Abruzzo.</h3>
+            <p>Amarena matura, tabacco dolce, finale lungo. Vigneti a 350 m. Vendemmia a mano nel 2021.</p>
+            <div class="facts">
+              <div class="fact"><b>2021</b><span>Vendemmia</span></div>
+              <div class="fact"><b>13,5%</b><span>Alcol</span></div>
+              <div class="fact"><b>750 ml</b><span>Volume</span></div>
+              <div class="fact"><b>Bassi</b><span>Solfiti</span></div>
+            </div>
+            <div class="price-block">
+              <span class="price">€18,40</span>
+              <span class="unit">€24,53 / litro</span>
+              <span class="fresh" style="margin-left:auto;">42 in magazzino</span>
+            </div>
+            <div style="display:flex; align-items:center; flex-wrap: wrap;">
+              <div class="qty"><button>−</button><span>1</span><button>+</button></div>
+              <span class="a-btn">Aggiungi al cesto</span>
+              <span class="a-btn ghost" style="margin-left:6px;padding:12px 14px;">♡</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CART -->
+      <div class="frame stretch-6">
+        <div class="label">④ Cesto</div>
+        <div class="num">/cart</div>
+        <div class="a-cart">
+          <h2>Il tuo <em>cesto.</em></h2>
+          <div class="lead">3 referenze · prossima spedizione martedì 19 maggio</div>
+          <div class="item">
+            <div class="pic">vino</div>
+            <div><div class="name">Montepulciano d'Abruzzo</div><div class="producer">Cataldi · 2021 · 750 ml</div></div>
+            <div class="qty"><button>−</button><span>2</span><button>+</button></div>
+            <div class="price">€36,80</div>
+          </div>
+          <div class="item">
+            <div class="pic">caffè</div>
+            <div><div class="name">Caffè Napoletano</div><div class="producer">Vesuvio · 250 g</div></div>
+            <div class="qty"><button>−</button><span>1</span><button>+</button></div>
+            <div class="price">€9,90</div>
+          </div>
+          <div class="item">
+            <div class="pic">dolci</div>
+            <div><div class="name">Cantucci alle mandorle</div><div class="producer">Prato · 200 g</div></div>
+            <div class="qty"><button>−</button><span>1</span><button>+</button></div>
+            <div class="price">€8,90</div>
+          </div>
+          <div class="gift">Aggiungi €4,40 e la spedizione è offerta!</div>
+          <div class="summary">
+            <div>Subtotale</div><div style="text-align:right;">€55,60</div>
+            <div>Spedizione · GLS</div><div style="text-align:right;">€4,90</div>
+            <div class="total">Totale</div><div>€60,50</div>
+          </div>
+          <div style="margin-top: 16px; display: flex; justify-content: flex-end;">
+            <span class="a-btn lg">Vai al pagamento →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="frame stretch-6">
+        <div class="label">⑤ Storia</div>
+        <div class="num">/about</div>
+        <div class="a-about">
+          <span class="eyebrow" style="display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--a-green);font-weight:500;letter-spacing:0.02em;text-transform:uppercase;"><span style="width:18px;height:1px;background:var(--a-green);display:inline-block;"></span>Dal 2024 · Bratislava</span>
+          <h3 style="margin-top: 12px;">Due fratelli,<br>una Fiat 500,<br>e <em>troppi barattoli.</em></h3>
+          <p>È iniziato in un viaggio in Puglia, nell'estate del 2023. Siamo tornati con la macchina piena di pasta, vino e olio, e con un numero di telefono che non smetteva di chiamare.</p>
+          <p>Oggi importiamo da 18 famiglie e piccole cooperative italiane, senza intermediari. Visitiamo ogni produttore almeno una volta l'anno — di solito due. Spediamo ogni martedì da Bratislava.</p>
+          <div class="stats">
+            <div class="stat"><div class="n">18</div><div class="l">Piccoli produttori</div></div>
+            <div class="stat"><div class="n green">7</div><div class="l">Regioni italiane</div></div>
+            <div class="stat"><div class="n">24</div><div class="l">Prodotti in bottega</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOG -->
+      <div class="frame stretch-12">
+        <div class="label">⑥ Diario</div>
+        <div class="num">/blog</div>
+        <div style="padding: 22px 22px 0;">
+          <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:36px;margin:0;letter-spacing:-0.025em;">Storie <em style="font-style:italic;font-weight:400;">dal campo.</em></h2>
+          <div style="font-family:'DM Sans',sans-serif;font-size:14px;color:#8b8275;margin-top:4px;">Una lettura lenta al mese · dal 2024</div>
+        </div>
+        <div class="a-blog">
+          <div class="grid" style="grid-template-columns: 1.6fr 1fr 1fr;">
+            <div class="card lead">
+              <div class="pic">foto · vigna al tramonto</div>
+              <div class="pad">
+                <span class="kicker">Marzo · cantina · 8 min</span>
+                <h4>Tre giorni in vigna con Cataldi.</h4>
+                <p class="excerpt">A Pescara si arriva di notte e si parte all'alba. La vendemmia è ancora a mano, in quattro. Le casse sono blu, e hanno vent'anni. Una storia di famiglia che continua.</p>
+                <div style="margin-top:14px;"><span class="a-btn">Leggi la storia →</span></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="pic">foto · tazzina</div>
+              <div class="pad">
+                <span class="kicker">Febbraio · caffè · 5 min</span>
+                <h4>Il caffè non è bruciato, è napoletano.</h4>
+                <p class="excerpt">Spoiler: a Napoli si tosta scuro per ragioni precise. Storia di una torrefazione di quartiere.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="pic">foto · olio nuovo</div>
+              <div class="pad">
+                <span class="kicker">Gennaio · olio · 4 min</span>
+                <h4>Olio nuovo, come si assaggia.</h4>
+                <p class="excerpt">Pane, sale, e tre passaggi. Cosa cercare, cosa ignorare.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="pencil-note s" style="bottom: 14px; right: 22px;">↘ una storia "lead" + due card · ritmo magazine ma morbido</span>
+      </div>
+
+    </div>
+
+    <div class="legend" style="background:#fbf6eb; border-color:#2a2620;">
+      <strong style="color:#ee6a2c;">Notes</strong>
+      <div class="item"><span class="swatch-sm" style="background:#ee6a2c"></span>orange · CTAs · price · "novità"</div>
+      <div class="item"><span class="swatch-sm" style="background:#2d8559"></span>basil green · live data · "fresh" cues</div>
+      <div class="item">Soft 18px radius on frames · 12px on cards · 999px pills · Fraunces serif for warmth · DM Sans for body · sparing DM Mono for SKUs</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     Tweaks panel + tab logic
+============================================================= -->
+<script>
+  // Tab logic
+  const tabs = document.querySelectorAll('.tab');
+  const panes = document.querySelectorAll('.style-pane');
+  function activate(slug) {
+    tabs.forEach(x => x.classList.toggle('active', x.dataset.style === slug));
+    panes.forEach(p => p.classList.toggle('active', p.dataset.pane === slug));
+  }
+  tabs.forEach(t => t.addEventListener('click', () => {
+    activate(t.dataset.style);
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }));
+  // open on Aranciata by default for this revision
+  activate('fresca');
+
+  // Keyboard arrows to switch
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    const cur = [...tabs].findIndex(t => t.classList.contains('active'));
+    const next = (cur + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+    tabs[next].click();
+  });
+</script>
+
+<!-- Tweaks -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<div id="tweaks-root"></div>
+
+<script type="text/babel">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "showAnnotations": true,
+    "showLabels": true,
+    "paperGrain": false,
+    "density": "roomy"
+  }/*EDITMODE-END*/;
+
+  function App() {
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+    React.useEffect(() => {
+      document.querySelectorAll('.pencil-note').forEach(n => {
+        n.style.display = t.showAnnotations ? '' : 'none';
+      });
+      document.querySelectorAll('.frame .label, .frame .num').forEach(n => {
+        n.style.display = t.showLabels ? '' : 'none';
+      });
+      document.body.style.backgroundImage = t.paperGrain
+        ? "radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px)"
+        : '';
+      document.body.style.backgroundSize = t.paperGrain ? '3px 3px' : '';
+      const canvases = document.querySelectorAll('.canvas');
+      canvases.forEach(c => {
+        c.style.padding = t.density === 'tight' ? '20px 16px 60px' : (t.density === 'roomy' ? '44px 40px 100px' : '32px 28px 80px');
+      });
+      const screens = document.querySelectorAll('.screens');
+      screens.forEach(s => {
+        s.style.gap = t.density === 'tight' ? '14px' : (t.density === 'roomy' ? '36px' : '24px');
+      });
+    }, [t]);
+
+    return (
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="Display">
+          <TweakToggle label="Pencil annotations" value={t.showAnnotations} onChange={(v) => setTweak('showAnnotations', v)} />
+          <TweakToggle label="Frame labels & route names" value={t.showLabels} onChange={(v) => setTweak('showLabels', v)} />
+          <TweakToggle label="Paper grain on canvas" value={t.paperGrain} onChange={(v) => setTweak('paperGrain', v)} />
+        </TweakSection>
+        <TweakSection title="Layout">
+          <TweakRadio label="Density" value={t.density} options={['tight','comfy','roomy']} onChange={(v) => setTweak('density', v)} />
+        </TweakSection>
+        <TweakSection title="Quick switch">
+          <div style={{display:'flex',gap:6,flexWrap:'wrap'}}>
+            <TweakButton onClick={() => document.querySelector('[data-style="editorial"]').click()}>① Editorial</TweakButton>
+            <TweakButton onClick={() => document.querySelector('[data-style="mercato"]').click()}>② Mercato</TweakButton>
+            <TweakButton onClick={() => document.querySelector('[data-style="brutal"]').click()}>③ Brutalist</TweakButton>
+            <TweakButton onClick={() => document.querySelector('[data-style="futurist"]').click()}>④ Officina/2099</TweakButton>
+            <TweakButton onClick={() => document.querySelector('[data-style="fresca"]').click()}>⑤ Aranciata</TweakButton>
+          </div>
+        </TweakSection>
+      </TweaksPanel>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<App />);
+</script>
+
+</body>
+</html>

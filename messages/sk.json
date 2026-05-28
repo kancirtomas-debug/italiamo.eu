@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "Domov",
+    "shop": "Obchod",
+    "wine": "Víno",
+    "coffee": "Káva",
+    "pasta": "Cestoviny",
+    "food": "Potraviny",
+    "bio": "BIO",
+    "about": "O nás",
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "cart": "Košík"
+  },
+  "hero": {
+    "eyebrow": "Italiamo",
+    "title": "Autentické chute Talianska",
+    "subtitle": "Importujeme exkluzívne talianske produkty priamo od výrobcov — víno, káva, cestoviny, oleje, omáčky.",
+    "cta": "Vstúpiť do obchodu",
+    "ctaSecondary": "Náš príbeh"
+  },
+  "categories": {
+    "title": "Kategórie",
+    "subtitle": "Od vinohradov po olivové háje"
+  },
+  "featured": {
+    "title": "Vybrané pre vás",
+    "viewAll": "Zobraziť všetko"
+  },
+  "regions": {
+    "title": "Regióny Talianska",
+    "subtitle": "Veneto, Toscana, Apúlia, Sardínia, Sicília, Piemonte"
+  },
+  "stats": {
+    "products": "Produktov v ponuke",
+    "regions": "Talianskych regiónov",
+    "wineries": "Spolupracujúcich vinárstiev",
+    "shipping": "Expedícia do 48 h"
+  },
+  "brands": {
+    "eyebrow": "— Značky, ktoré dovážame"
+  },
+  "shop": {
+    "title": "Obchod",
+    "filterCategory": "Kategória",
+    "all": "Všetko",
+    "addToCart": "Pridať do košíka",
+    "outOfStock": "Nedostupné",
+    "details": "Detail produktu"
+  },
+  "product": {
+    "back": "Späť do obchodu",
+    "addToCart": "Pridať do košíka",
+    "added": "Pridané",
+    "quantity": "Množstvo",
+    "details": "Detaily",
+    "region": "Región",
+    "winery": "Vinárstvo",
+    "vintage": "Ročník",
+    "alcohol": "Alkohol",
+    "volume": "Objem"
+  },
+  "cart": {
+    "title": "Košík",
+    "empty": "Váš košík je prázdny.",
+    "continueShopping": "Pokračovať v nákupe",
+    "subtotal": "Medzisúčet",
+    "shipping": "Doprava",
+    "total": "Spolu",
+    "remove": "Odstrániť",
+    "checkout": "K pokladni"
+  },
+  "checkout": {
+    "title": "Pokladňa",
+    "contact": "Kontaktné údaje",
+    "name": "Meno a priezvisko",
+    "email": "E-mail",
+    "phone": "Telefón",
+    "address": "Doručovacia adresa",
+    "street": "Ulica a číslo",
+    "city": "Mesto",
+    "zip": "PSČ",
+    "country": "Krajina",
+    "payment": "Spôsob platby",
+    "card": "Platba kartou",
+    "cardDesc": "Bezpečná platba kartou cez GoPay",
+    "bank": "Bankový prevod",
+    "bankDesc": "Pošlite platbu na náš účet, objednávka bude potvrdená po prijatí",
+    "bankDetails": "Bankové údaje",
+    "iban": "IBAN",
+    "swift": "SWIFT/BIC",
+    "holder": "Príjemca",
+    "reference": "Variabilný symbol",
+    "note": "Poznámka",
+    "place": "Odoslať objednávku",
+    "summary": "Zhrnutie objednávky"
+  },
+  "success": {
+    "title": "Ďakujeme za objednávku",
+    "subtitle": "Vašu objednávku sme prijali. Zaslali sme vám potvrdenie e-mailom.",
+    "orderNumber": "Číslo objednávky",
+    "bankInstructions": "Pre dokončenie platby uhraďte sumu na náš účet",
+    "home": "Späť na úvod"
+  },
+  "footer": {
+    "tagline": "Importér exkluzívnych talianskych produktov",
+    "shop": "Obchod",
+    "company": "Spoločnosť",
+    "legal": "Právne",
+    "terms": "Obchodné podmienky",
+    "privacy": "Ochrana súkromia",
+    "contact": "Kontakt",
+    "rights": "Všetky práva vyhradené"
+  }
+}

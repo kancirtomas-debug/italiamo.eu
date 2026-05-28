@@ -1,0 +1,496 @@
+/* ===========================================================
+   STYLE 5 — ARANCIATA (friendly · light · orange + green + white)
+   warm modern Italian, soft rounded UI, no CLI / no brutalist edges
+   =========================================================== */
+.s-fresca {
+  --a-bg: #ffffff;
+  --a-surface: #fafaf7;
+  --a-cream: #f3efe6;
+  --a-ink: #1f1d1a;
+  --a-mute: #8e887e;
+  --a-rule: #e7e3d9;
+  --a-orange: #b5532a;
+  --a-orange-soft: #f3e3d5;
+  --a-green: #1f6e4a;
+  --a-green-soft: #e1ebe2;
+  --a-yellow: #d9b65f;
+}
+.s-fresca .style-intro {
+  background: var(--a-surface); color: var(--a-ink);
+  border-color: var(--a-ink); border-style: solid; border-radius: 18px;
+}
+.s-fresca .style-intro h2 {
+  font-family: 'Fraunces', serif; font-weight: 600; font-style: normal;
+  font-size: 48px; letter-spacing: -0.02em; line-height: 0.95; color: var(--a-ink);
+}
+.s-fresca .style-intro h2 em { font-style: italic; color: var(--a-orange); }
+.s-fresca .style-intro .slug { color: var(--a-green); }
+.s-fresca .style-intro p { color: #4a4338; font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.55; }
+.s-fresca .style-intro .swatch { border-color: var(--a-ink); border-radius: 6px; }
+.s-fresca .style-intro .moodbox { border-left-color: var(--a-orange); }
+.s-fresca .style-intro .moodchip {
+  background: #fff; color: var(--a-ink); border-color: var(--a-ink);
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+  letter-spacing: 0; text-transform: none; padding: 3px 12px;
+}
+
+.s-fresca .frame {
+  background: var(--a-bg); color: var(--a-ink);
+  border: 1px solid var(--a-rule); border-radius: 14px;
+  box-shadow: 0 1px 0 rgba(31,29,26,0.04);
+  background-image: none;
+  overflow: hidden;
+}
+.s-fresca .frame .label {
+  background: var(--a-ink); color: #fff; border-radius: 999px;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  font-size: 11px; letter-spacing: 0.02em; text-transform: none;
+  padding: 3px 12px; top: -10px;
+}
+.s-fresca .frame .num { color: var(--a-mute); font-family: 'DM Mono', monospace; font-size: 10px; }
+
+/* nav */
+.s-fresca .navbar {
+  background: var(--a-bg); color: var(--a-ink);
+  border-bottom: 1px solid var(--a-rule); padding: 14px 18px;
+}
+.s-fresca .navbar .brand {
+  font-family: 'Fraunces', serif; font-weight: 600; font-style: italic;
+  font-size: 26px; letter-spacing: -0.01em; text-transform: none; color: var(--a-ink);
+}
+.s-fresca .navbar .brand::before {
+  content: ''; display: inline-block; width: 10px; height: 10px;
+  background: var(--a-orange); border-radius: 50%; margin-right: 8px;
+  vertical-align: middle;
+}
+.s-fresca .navbar nav { gap: 20px; }
+.s-fresca .navbar nav span {
+  color: var(--a-ink); font-family: 'DM Sans', sans-serif; font-size: 14px;
+  letter-spacing: 0; text-transform: none; font-weight: 500;
+}
+.s-fresca .navbar nav span::before { content: ''; }
+.s-fresca .navbar .right {
+  color: var(--a-ink); font-family: 'DM Sans', sans-serif; font-size: 14px;
+  text-transform: none; letter-spacing: 0; display: flex; gap: 14px; align-items: center;
+}
+.s-fresca .navbar .cart-pill {
+  background: var(--a-ink); color: #fff; padding: 6px 12px;
+  border-radius: 999px; font-size: 13px;
+}
+
+/* friendly delivery banner */
+.s-fresca .ribbon {
+  background: var(--a-surface); color: var(--a-ink);
+  border-bottom: 1px solid var(--a-rule);
+  font-family: 'DM Sans', sans-serif; font-size: 13px;
+  padding: 8px 18px; text-align: center;
+  display: flex; gap: 14px; justify-content: center; align-items: center;
+}
+.s-fresca .ribbon b { font-weight: 600; color: var(--a-green); }
+.s-fresca .ribbon .dot { display: inline-block; width: 3px; height: 3px; background: var(--a-mute); border-radius: 50%; }
+
+/* hero */
+.s-fresca .a-hero {
+  position: relative; padding: 56px 32px 56px;
+  background: var(--a-bg);
+  display: grid; grid-template-columns: 1.25fr 1fr; gap: 36px;
+  align-items: center;
+  border-bottom: 1px solid var(--a-rule);
+}
+.s-fresca .a-hero .eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; border: 0;
+  padding: 0; font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--a-green); font-weight: 500;
+  letter-spacing: 0.02em; text-transform: uppercase;
+}
+.s-fresca .a-hero .eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--a-green); }
+.s-fresca .a-hero h1 {
+  font-family: 'Fraunces', serif; font-weight: 500; font-style: normal;
+  font-size: 64px; line-height: 1; letter-spacing: -0.025em;
+  margin: 18px 0 16px; color: var(--a-ink);
+}
+.s-fresca .a-hero h1 em { font-style: italic; font-weight: 400; color: var(--a-ink); }
+.s-fresca .a-hero p {
+  font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.55;
+  color: #4a4338; max-width: 460px; margin: 0;
+}
+.s-fresca .a-hero .cta { display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap; }
+
+.s-fresca .a-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--a-ink); color: #fff;
+  padding: 12px 22px; border-radius: 999px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+  border: 1px solid var(--a-ink); text-transform: none; letter-spacing: 0;
+}
+.s-fresca .a-btn::before, .s-fresca .a-btn::after { content: ''; }
+.s-fresca .a-btn.orange { background: var(--a-orange); border-color: var(--a-orange); }
+.s-fresca .a-btn.green { background: var(--a-green); border-color: var(--a-green); }
+.s-fresca .a-btn.ghost { background: transparent; color: var(--a-ink); border: 1px solid var(--a-rule); }
+.s-fresca .a-btn.lg { padding: 14px 26px; font-size: 15px; }
+
+.s-fresca .a-hero .picture {
+  position: relative; aspect-ratio: 1/1;
+  background: var(--a-surface); border-radius: 8px; border: 1px solid var(--a-rule);
+  display: grid; place-items: center; color: var(--a-mute);
+  font-family: 'DM Sans', sans-serif; font-size: 13px;
+  overflow: hidden;
+}
+.s-fresca .a-hero .picture::after {
+  content: ''; position: absolute; inset: 14%;
+  background: repeating-linear-gradient(45deg, transparent 0 9px, var(--a-cream) 9px 10px);
+  border-radius: 4px;
+}
+.s-fresca .a-hero .picture span { position: relative; z-index: 1; background: rgba(255,255,255,0.9); padding: 4px 10px; border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.04em; }
+
+.s-fresca .a-hero .badge {
+  position: absolute; top: 16px; left: 16px;
+  background: #fff; border: 1px solid var(--a-rule); border-radius: 999px;
+  padding: 5px 12px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 12px; color: var(--a-orange);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.s-fresca .a-hero .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--a-orange); }
+
+/* category strip */
+.s-fresca .cat-row {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+  padding: 28px 28px 12px;
+}
+.s-fresca .cat-card {
+  background: #fff; border-radius: 8px;
+  border: 1px solid var(--a-rule);
+  padding: 22px 20px; aspect-ratio: auto;
+  display: flex; flex-direction: column; gap: 18px;
+  position: relative; overflow: hidden;
+  transition: border-color .12s;
+}
+.s-fresca .cat-card:hover { border-color: var(--a-ink); }
+.s-fresca .cat-card.green,
+.s-fresca .cat-card.cream,
+.s-fresca .cat-card.yellow,
+.s-fresca .cat-card.peach { background: #fff; }
+.s-fresca .cat-card .name {
+  font-family: 'Fraunces', serif; font-style: normal; font-weight: 500; font-size: 22px; line-height: 1; letter-spacing: -0.01em;
+}
+.s-fresca .cat-card .ct {
+  font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--a-mute); margin-top: 4px;
+}
+.s-fresca .cat-card .circle {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--a-orange);
+  align-self: flex-start; display: block;
+}
+.s-fresca .cat-card.green .circle  { background: var(--a-green); }
+.s-fresca .cat-card.yellow .circle { background: var(--a-yellow); }
+.s-fresca .cat-card.cream .circle  { background: var(--a-mute); }
+.s-fresca .cat-card.peach .circle  { background: var(--a-orange); }
+
+/* module header */
+.s-fresca .a-section {
+  padding: 36px 28px 6px;
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-top: 1px solid var(--a-rule);
+  margin-top: 16px;
+}
+.s-fresca .a-section:first-of-type { border-top: 0; margin-top: 0; }
+.s-fresca .a-section h2 {
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 28px;
+  letter-spacing: -0.02em; margin: 0; color: var(--a-ink);
+}
+.s-fresca .a-section h2 em { font-style: italic; font-weight: 400; color: var(--a-ink); }
+.s-fresca .a-section .link {
+  font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--a-ink); font-weight: 500;
+  border-bottom: 1px solid var(--a-ink); padding-bottom: 1px;
+}
+
+/* product cards (3-up) */
+.s-fresca .a-grid3 {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  padding: 14px 28px 32px;
+}
+.s-fresca .a-grid4 { grid-template-columns: repeat(4, 1fr); }
+.s-fresca .a-card {
+  background: #fff; border: 1px solid var(--a-rule); border-radius: 8px;
+  padding: 14px; position: relative; display: flex; flex-direction: column; gap: 10px;
+  transition: border-color .12s;
+}
+.s-fresca .a-card:hover { border-color: var(--a-ink); }
+.s-fresca .a-card .pic {
+  aspect-ratio: 1/1; background: var(--a-surface); border-radius: 6px;
+  display: grid; place-items: center; color: var(--a-mute);
+  font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.04em;
+  border: 1px solid var(--a-rule); position: relative;
+}
+.s-fresca .a-card .tag {
+  position: absolute; top: 10px; left: 10px;
+  background: #fff; color: var(--a-ink); border: 1px solid var(--a-rule);
+  font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
+  padding: 3px 9px; border-radius: 999px;
+}
+.s-fresca .a-card .tag.green { color: var(--a-green); border-color: var(--a-green); }
+.s-fresca .a-card .tag.yellow { color: #8a6b1c; border-color: #d9b65f; }
+.s-fresca .a-card .name {
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 18px; line-height: 1.15;
+  color: var(--a-ink); margin-top: 2px; letter-spacing: -0.01em;
+}
+.s-fresca .a-card .producer {
+  font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--a-mute);
+}
+.s-fresca .a-card .row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: auto; padding-top: 6px; border-top: 1px solid var(--a-rule);
+}
+.s-fresca .a-card .price {
+  font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 16px; color: var(--a-ink);
+  font-variant-numeric: tabular-nums;
+}
+.s-fresca .a-card .add {
+  background: transparent; color: var(--a-ink); border: 1px solid var(--a-rule);
+  width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
+  font-family: 'DM Sans', sans-serif; font-size: 18px; line-height: 1; font-weight: 400;
+}
+.s-fresca .a-card:hover .add { background: var(--a-ink); color: #fff; border-color: var(--a-ink); }
+
+/* small "fresh" pill */
+.s-fresca .fresh {
+  display: inline-flex; gap: 6px; align-items: center;
+  font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--a-mute); font-weight: 400;
+}
+.s-fresca .fresh::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--a-green); }
+
+/* shop: sidebar */
+.s-fresca .a-shop { display: grid; grid-template-columns: 220px 1fr; border-top: 1px solid var(--a-rule); }
+.s-fresca .a-side {
+  background: var(--a-bg); border-right: 1px solid var(--a-rule);
+  padding: 24px 20px; font-family: 'DM Sans', sans-serif; font-size: 13px;
+}
+.s-fresca .a-side h6 {
+  margin: 22px 0 8px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 11px;
+  color: var(--a-mute); text-transform: uppercase; letter-spacing: 0.1em;
+}
+.s-fresca .a-side h6:first-child { margin-top: 0; }
+.s-fresca .a-side ul { list-style: none; padding: 0; margin: 0; }
+.s-fresca .a-side li {
+  display: flex; justify-content: space-between; padding: 7px 0;
+  color: var(--a-ink); border-bottom: 1px solid var(--a-rule);
+  font-size: 13px;
+}
+.s-fresca .a-side li:last-child { border-bottom: 0; }
+.s-fresca .a-side li.on {
+  color: var(--a-ink); font-weight: 500;
+}
+.s-fresca .a-side li.on::before {
+  content: '✓ '; color: var(--a-orange); font-weight: 700; margin-right: 2px;
+}
+.s-fresca .a-side li:not(.on)::before {
+  content: ''; margin-right: 14px;
+}
+.s-fresca .a-side li .ct { color: var(--a-mute); font-variant-numeric: tabular-nums; }
+
+/* PDP */
+.s-fresca .a-pdp {
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 26px;
+  padding: 26px;
+}
+.s-fresca .a-pdp .gallery {
+  display: grid; grid-template-rows: 1fr 70px; gap: 10px;
+}
+.s-fresca .a-pdp .main {
+  background: var(--a-surface); border-radius: 8px; border: 1px solid var(--a-rule);
+  aspect-ratio: 1/1; display: grid; place-items: center; color: var(--a-mute);
+  font-family: 'DM Sans', sans-serif; font-size: 13px; position: relative; overflow: hidden;
+}
+.s-fresca .a-pdp .main::after {
+  content: ''; position: absolute; inset: 14%;
+  background: repeating-linear-gradient(45deg, transparent 0 9px, var(--a-cream) 9px 10px);
+  border-radius: 8px;
+}
+.s-fresca .a-pdp .thumbs {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+}
+.s-fresca .a-pdp .thumbs .t {
+  background: var(--a-surface); border: 1px solid var(--a-rule); border-radius: 6px;
+  aspect-ratio: 1/1; display: grid; place-items: center; color: var(--a-mute); font-size: 10px;
+}
+.s-fresca .a-pdp .thumbs .t.active { border-color: var(--a-ink); }
+.s-fresca .a-pdp .info .producer {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--a-green); font-weight: 500;
+  letter-spacing: 0.02em; text-transform: uppercase;
+}
+.s-fresca .a-pdp .info .producer::before {
+  content: ''; width: 18px; height: 1px; background: var(--a-green);
+}
+.s-fresca .a-pdp .info h3 {
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 38px;
+  letter-spacing: -0.025em; line-height: 1; margin: 10px 0 12px;
+}
+.s-fresca .a-pdp .info p {
+  font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.55;
+  color: #4a4338; margin: 0 0 14px;
+}
+.s-fresca .a-pdp .price-block {
+  display: flex; align-items: baseline; gap: 16px;
+  padding: 16px 0; border-top: 1px solid var(--a-rule); border-bottom: 1px solid var(--a-rule);
+  margin: 14px 0 16px;
+}
+.s-fresca .a-pdp .price {
+  font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 28px; color: var(--a-ink);
+  font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+}
+.s-fresca .a-pdp .unit {
+  font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--a-mute);
+}
+.s-fresca .a-pdp .facts {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 8px 0 14px;
+}
+.s-fresca .a-pdp .fact {
+  background: var(--a-surface); border-radius: 6px; padding: 12px 14px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; border: 1px solid var(--a-rule);
+}
+.s-fresca .a-pdp .fact b { display: block; font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: -0.01em; }
+.s-fresca .a-pdp .fact span { color: var(--a-mute); font-size: 12px; }
+
+.s-fresca .qty {
+  display: inline-flex; align-items: center; border: 1px solid var(--a-rule); border-radius: 999px;
+  background: #fff; margin-right: 8px; overflow: hidden;
+}
+.s-fresca .qty span { padding: 0 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; }
+.s-fresca .qty button {
+  background: transparent; border: 0; padding: 8px 12px;
+  font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--a-ink); cursor: pointer;
+}
+
+/* cart */
+.s-fresca .a-cart { padding: 28px; }
+.s-fresca .a-cart h2 {
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 32px; margin: 0 0 4px;
+  letter-spacing: -0.025em;
+}
+.s-fresca .a-cart h2 em { font-style: italic; font-weight: 400; color: var(--a-ink); }
+.s-fresca .a-cart .lead { color: var(--a-mute); font-family: 'DM Sans', sans-serif; font-size: 13px; margin-bottom: 20px; }
+.s-fresca .a-cart .item {
+  display: grid; grid-template-columns: 64px 1fr auto auto; gap: 16px;
+  padding: 16px 0; border-bottom: 1px solid var(--a-rule); align-items: center;
+}
+.s-fresca .a-cart .item .pic {
+  width: 64px; height: 64px; border-radius: 6px; background: var(--a-surface);
+  border: 1px solid var(--a-rule); display: grid; place-items: center; color: var(--a-mute); font-size: 10px; font-family: 'DM Mono', monospace;
+}
+.s-fresca .a-cart .item .name {
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: -0.01em;
+}
+.s-fresca .a-cart .item .producer {
+  font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--a-mute);
+}
+.s-fresca .a-cart .item .price {
+  font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 16px; font-variant-numeric: tabular-nums;
+}
+.s-fresca .a-cart .summary {
+  background: var(--a-surface); border: 1px solid var(--a-rule);
+  border-radius: 8px; padding: 20px; margin-top: 22px;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 10px 24px; font-family: 'DM Sans', sans-serif; font-size: 14px;
+}
+.s-fresca .a-cart .summary > div:nth-child(even) { text-align: right; font-variant-numeric: tabular-nums; }
+.s-fresca .a-cart .summary .total {
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 20px; color: var(--a-ink);
+  border-top: 1px solid var(--a-rule); padding-top: 14px; letter-spacing: -0.01em;
+}
+.s-fresca .a-cart .summary .total + div { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 20px; border-top: 1px solid var(--a-rule); padding-top: 14px; text-align: right; }
+.s-fresca .a-cart .gift {
+  background: transparent; border: 1px dashed var(--a-green); border-radius: 6px; padding: 12px 14px;
+  margin-top: 16px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--a-green);
+  display: flex; gap: 10px; align-items: center;
+}
+.s-fresca .a-cart .gift::before { content: '+'; font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 400; }
+
+/* about */
+.s-fresca .a-about { padding: 36px 32px; background: var(--a-bg); }
+.s-fresca .a-about h3 {
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 48px;
+  letter-spacing: -0.03em; line-height: 1; margin: 14px 0 18px;
+}
+.s-fresca .a-about h3 em { font-style: italic; font-weight: 400; color: var(--a-ink); }
+.s-fresca .a-about p {
+  font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.6;
+  color: #3d3830; max-width: 520px; margin: 0 0 12px;
+}
+.s-fresca .a-about .stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 28px;
+  border-top: 1px solid var(--a-rule); border-bottom: 1px solid var(--a-rule);
+}
+.s-fresca .a-about .stat {
+  background: transparent; border: 0; border-right: 1px solid var(--a-rule); padding: 22px 4px 22px 0;
+}
+.s-fresca .a-about .stat:last-child { border-right: 0; }
+.s-fresca .a-about .stat .n {
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 36px; line-height: 1;
+  color: var(--a-ink); letter-spacing: -0.025em;
+}
+.s-fresca .a-about .stat .n.green { color: var(--a-ink); }
+.s-fresca .a-about .stat .l {
+  font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--a-mute); margin-top: 8px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+/* blog */
+.s-fresca .a-blog { padding: 22px 28px 28px; }
+.s-fresca .a-blog .grid {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 18px;
+}
+.s-fresca .a-blog .card {
+  background: #fff; border: 1px solid var(--a-rule); border-radius: 8px; overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: border-color .12s;
+}
+.s-fresca .a-blog .card:hover { border-color: var(--a-ink); }
+.s-fresca .a-blog .card .pic {
+  aspect-ratio: 4/3; background: var(--a-surface);
+  border-bottom: 1px solid var(--a-rule);
+  display: grid; place-items: center; color: var(--a-mute); font-size: 11px; font-family: 'DM Mono', monospace;
+}
+.s-fresca .a-blog .card.lead .pic { aspect-ratio: 5/4; }
+.s-fresca .a-blog .card .pad { padding: 18px 18px 22px; }
+.s-fresca .a-blog .card .kicker {
+  display: inline-flex; gap: 8px; align-items: center;
+  font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--a-mute); font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.s-fresca .a-blog .card .kicker::before { content: ''; width: 14px; height: 1px; background: var(--a-mute); }
+.s-fresca .a-blog .card h4 {
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px;
+  letter-spacing: -0.02em; line-height: 1.1; margin: 10px 0 6px;
+}
+.s-fresca .a-blog .card.lead h4 { font-size: 28px; letter-spacing: -0.025em; }
+.s-fresca .a-blog .card .excerpt {
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: #4a4338; margin: 4px 0 0; line-height: 1.55;
+}
+
+/* footer */
+.s-fresca .a-foot {
+  background: var(--a-ink); color: #d8d3c8; padding: 36px 32px;
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 28px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px;
+}
+.s-fresca .a-foot h6 { margin: 0 0 12px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 11px; color: #908a7e; text-transform: uppercase; letter-spacing: 0.1em; }
+.s-fresca .a-foot .brand {
+  font-family: 'Fraunces', serif; font-weight: 500; font-style: normal;
+  font-size: 28px; color: #fff; letter-spacing: -0.02em;
+}
+.s-fresca .a-foot .brand::before {
+  content: ''; display: inline-block; width: 8px; height: 8px;
+  background: var(--a-orange); border-radius: 50%; margin-right: 8px;
+  vertical-align: middle;
+}
+.s-fresca .a-foot .signoff {
+  font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 14px; color: #b8b2a4; margin-top: 10px;
+}
+.s-fresca .a-foot .news-row { display: flex; gap: 6px; margin-top: 10px; }
+.s-fresca .a-foot .news-row input {
+  flex: 1; padding: 9px 14px; border-radius: 999px; border: 1px solid #4a443a;
+  background: transparent; color: #fff; font-family: inherit; font-size: 13px;
+}
+.s-fresca .a-foot .news-row .a-btn { padding: 9px 16px; font-size: 13px; background: #fff; color: var(--a-ink); border-color: #fff; }
+.s-fresca .a-foot .scribble { background: #3a342c; opacity: 1; height: 6px; }
+
+.s-fresca .pencil-note { color: var(--a-mute); }
