@@ -1,5 +1,5 @@
 /**
- * Dev-only order persistence — local JSON file.
+ * Dev-only order persistence - local JSON file.
  * Loaded via dynamic import so it never reaches the serverless bundle.
  *
  * Production: replace with Vercel Postgres / Neon / Upstash, etc.

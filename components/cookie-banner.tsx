@@ -5,7 +5,7 @@ import { Link } from "@/lib/i18n/navigation";
 
 const STORAGE_KEY = "italiamo.cookie-consent";
 
-export function CookieBanner({ locale }: { locale: "sk" | "it" }) {
+export function CookieBanner({ locale }: { locale: "sk" | "en" }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -25,15 +25,15 @@ export function CookieBanner({ locale }: { locale: "sk" | "it" }) {
     setOpen(false);
   };
 
-  const t = locale === "it"
+  const t = locale === "en"
     ? {
-        title: "Cookie",
+        title: "Cookies",
         body:
-          "Usiamo cookie tecnici essenziali. Cookie analitici e di marketing solo con il tuo consenso.",
-        details: "Dettagli nella nostra ",
-        privacy: "informativa privacy",
-        accept: "Accetta tutti",
-        essential: "Solo essenziali",
+          "We use essential technical cookies. Analytics and marketing cookies only with your consent.",
+        details: "More in our ",
+        privacy: "privacy policy",
+        accept: "Accept all",
+        essential: "Essential only",
       }
     : {
         title: "Cookies",
@@ -51,7 +51,7 @@ export function CookieBanner({ locale }: { locale: "sk" | "it" }) {
       aria-label={t.title}
       className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:bottom-6 md:max-w-[420px] z-50 bg-cream-50 border border-ink-700/15 shadow-xl shadow-ink-900/10 p-6"
     >
-      <p className="eyebrow text-ink-500 mb-2">— {t.title}</p>
+      <p className="eyebrow text-ink-500 mb-2">{t.title}</p>
       <p className="text-sm text-ink-700 leading-relaxed">
         {t.body}{" "}
         <span className="text-ink-500">

@@ -7,6 +7,7 @@
     "pasta": "Cestoviny",
     "food": "Potraviny",
     "bio": "BIO",
+    "snacks": "Slané pochutiny",
     "about": "O nás",
     "contact": "Kontakt",
     "blog": "Blog",
@@ -15,7 +16,7 @@
   "hero": {
     "eyebrow": "Italiamo",
     "title": "Autentické chute Talianska",
-    "subtitle": "Importujeme exkluzívne talianske produkty priamo od výrobcov — víno, káva, cestoviny, oleje, omáčky.",
+    "subtitle": "Importujeme exkluzívne talianske produkty priamo od výrobcov - víno, káva, cestoviny, oleje, omáčky.",
     "cta": "Vstúpiť do obchodu",
     "ctaSecondary": "Náš príbeh"
   },
@@ -38,7 +39,7 @@
     "shipping": "Expedícia do 48 h"
   },
   "brands": {
-    "eyebrow": "— Značky, ktoré dovážame"
+    "eyebrow": "- Značky, ktoré dovážame"
   },
   "shop": {
     "title": "Obchod",
@@ -89,6 +90,13 @@
     "bankDetails": "Bankové údaje",
     "iban": "IBAN",
     "swift": "SWIFT/BIC",
+    "bankAddress": "Adresa",
+    "bankName": "Banka",
+    "accountNumber": "Číslo účtu / kód banky",
+    "ico": "IČO",
+    "dic": "DIČ",
+    "icDph": "IČ DPH",
+    "register": "Obchodný register",
     "holder": "Príjemca",
     "reference": "Variabilný symbol",
     "note": "Poznámka",

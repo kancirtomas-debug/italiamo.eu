@@ -1,0 +1,123 @@
+{
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "wine": "Wine",
+    "coffee": "Coffee",
+    "pasta": "Pasta",
+    "food": "Food",
+    "bio": "Organic",
+    "snacks": "Salty snacks",
+    "about": "About",
+    "contact": "Contact",
+    "blog": "Blog",
+    "cart": "Cart"
+  },
+  "hero": {
+    "eyebrow": "Italiamo",
+    "title": "Authentic flavours of Italy",
+    "subtitle": "We import exclusive Italian products direct from the producers - wine, coffee, pasta, oils, sauces.",
+    "cta": "Enter the shop",
+    "ctaSecondary": "Our story"
+  },
+  "categories": {
+    "title": "Categories",
+    "subtitle": "From vineyards to olive groves"
+  },
+  "featured": {
+    "title": "Selected for you",
+    "viewAll": "View all"
+  },
+  "regions": {
+    "title": "Regions of Italy",
+    "subtitle": "Veneto, Tuscany, Apulia, Sardinia, Sicily, Piedmont"
+  },
+  "stats": {
+    "products": "Products available",
+    "regions": "Italian regions",
+    "wineries": "Partner wineries",
+    "shipping": "48-hour delivery"
+  },
+  "brands": {
+    "eyebrow": "- Brands we import"
+  },
+  "shop": {
+    "title": "Shop",
+    "filterCategory": "Category",
+    "all": "All",
+    "addToCart": "Add to cart",
+    "outOfStock": "Out of stock",
+    "details": "Product details"
+  },
+  "product": {
+    "back": "Back to shop",
+    "addToCart": "Add to cart",
+    "added": "Added",
+    "quantity": "Quantity",
+    "details": "Details",
+    "region": "Region",
+    "winery": "Winery",
+    "vintage": "Vintage",
+    "alcohol": "Alcohol",
+    "volume": "Volume"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty.",
+    "continueShopping": "Continue shopping",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "total": "Total",
+    "remove": "Remove",
+    "checkout": "Go to checkout"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "contact": "Contact details",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Shipping address",
+    "street": "Street and number",
+    "city": "City",
+    "zip": "ZIP",
+    "country": "Country",
+    "payment": "Payment method",
+    "card": "Credit card",
+    "cardDesc": "Secure card payment via GoPay",
+    "bank": "Bank transfer",
+    "bankDesc": "Send payment to our account, your order will be confirmed on receipt",
+    "bankDetails": "Bank details",
+    "iban": "IBAN",
+    "swift": "SWIFT/BIC",
+    "bankAddress": "Address",
+    "bankName": "Bank",
+    "accountNumber": "Account number / bank code",
+    "ico": "Company ID (IČO)",
+    "dic": "Tax ID (DIČ)",
+    "icDph": "VAT ID (IČ DPH)",
+    "register": "Commercial register",
+    "holder": "Beneficiary",
+    "reference": "Reference",
+    "note": "Notes",
+    "place": "Place order",
+    "summary": "Order summary"
+  },
+  "success": {
+    "title": "Thank you for your order",
+    "subtitle": "We've received your order. A confirmation email is on its way.",
+    "orderNumber": "Order number",
+    "bankInstructions": "To complete payment, transfer the amount to our account",
+    "home": "Back to home"
+  },
+  "footer": {
+    "tagline": "Importer of exclusive Italian products",
+    "shop": "Shop",
+    "company": "Company",
+    "legal": "Legal",
+    "terms": "Terms of service",
+    "privacy": "Privacy",
+    "contact": "Contact",
+    "rights": "All rights reserved"
+  }
+}

@@ -40,7 +40,7 @@ export async function POST(req: Request) {
     `Name: ${name}`,
     `Email: ${email}`,
     phone && `Phone: ${phone}`,
-    `Locale: ${data.locale ?? "—"}`,
+    `Locale: ${data.locale ?? "-"}`,
     "",
     "Message:",
     message,

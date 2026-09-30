@@ -4,11 +4,11 @@ import { useState } from "react";
 
 type Status = "idle" | "sending" | "ok" | "error";
 
-export function LeadForm({ locale }: { locale: "sk" | "it" }) {
+export function LeadForm({ locale }: { locale: "sk" | "en" }) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string>("");
 
-  const t = locale === "it"
+  const t = locale === "en"
     ? {
         name: "Nome e cognome",
         email: "E-mail",

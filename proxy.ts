@@ -12,6 +12,14 @@ export default async function proxy(req: NextRequest) {
     return NextResponse.next();
   }
 
+  // Admin lives at /admin (no locale prefix). Redirect legacy /sk/admin, /it/admin.
+  const localeAdmin = pathname.match(/^\/(?:sk|en)(\/admin(?:\/.*)?)$/);
+  if (localeAdmin) {
+    const url = req.nextUrl.clone();
+    url.pathname = localeAdmin[1];
+    return NextResponse.redirect(url);
+  }
+
   if (pathname.startsWith("/admin")) {
     const session = await auth();
     const isLogin = pathname === "/admin/login";
@@ -34,5 +42,5 @@ export default async function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/(sk|it)/:path*", "/admin/:path*", "/((?!api|_next|_vercel|.*\\..*).*)"],
+  matcher: ["/", "/(sk|en)/:path*", "/admin/:path*", "/((?!api|_next|_vercel|.*\\..*).*)"],
 };

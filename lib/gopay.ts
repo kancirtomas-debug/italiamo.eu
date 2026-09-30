@@ -2,7 +2,7 @@
  * Minimal GoPay REST integration.
  * Docs: https://help.gopay.com/en/knowledge-base/integration/integration-of-payment-gateway-by-rest-api
  *
- * In dev mode without real credentials this throws — caller falls back gracefully.
+ * In dev mode without real credentials this throws - caller falls back gracefully.
  */
 
 type GoPayTokenResponse = { access_token: string; token_type: string };
@@ -36,8 +36,8 @@ export async function createGoPayPayment(opts: {
   amount: number;
   reference: string;
   email: string;
-  locale: "sk" | "it";
-}): Promise<string> {
+  locale: "sk" | "en";
+}): Promise<{ url: string; id: string }> {
   const token = await getAccessToken();
   const apiUrl = process.env.GOPAY_API_URL ?? "https://gw.sandbox.gopay.com/api";
   const goid = Number(process.env.GOPAY_GOID ?? "0");
@@ -79,6 +79,22 @@ export async function createGoPayPayment(opts: {
     throw new Error(`GoPay create failed: ${res.status} ${txt}`);
   }
 
-  const data = (await res.json()) as { gw_url: string };
-  return data.gw_url;
+  const data = (await res.json()) as { gw_url: string; id: number };
+  return { url: data.gw_url, id: String(data.id) };
+}
+
+/**
+ * Fetch a payment's current state from GoPay. Used by the notification webhook
+ * to confirm a card payment server-side (never trust the browser redirect).
+ * Returns GoPay states: CREATED, PAID, CANCELED, TIMEOUTED, REFUNDED, etc.
+ */
+export async function getGoPayPaymentState(id: string): Promise<string> {
+  const token = await getAccessToken();
+  const apiUrl = process.env.GOPAY_API_URL ?? "https://gw.sandbox.gopay.com/api";
+  const res = await fetch(`${apiUrl}/payments/payment/${id}`, {
+    headers: { Authorization: `Bearer ${token}`, Accept: "application/json" },
+  });
+  if (!res.ok) throw new Error(`GoPay status failed: ${res.status}`);
+  const data = (await res.json()) as { state: string };
+  return data.state;
 }

@@ -4,11 +4,11 @@ export function DeliveryRibbon({ locale }: { locale: Locale }) {
   return (
     <div className="delivery-ribbon">
       <span>
-        {locale === "it" ? "Spedizione il martedì" : "Doručenie v utorok"}
+        {locale === "en" ? "Delivery on Tuesday" : "Doručenie v utorok"}
       </span>
       <span className="dot" />
       <b>
-        {locale === "it" ? "Gratis sopra €60" : "Doprava zdarma nad €60"}
+        {locale === "en" ? "Free over €60" : "Doprava zdarma nad €60"}
       </b>
     </div>
   );

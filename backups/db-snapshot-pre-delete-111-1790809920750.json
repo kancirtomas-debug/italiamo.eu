@@ -1,0 +1,26 @@
+[
+  {
+    "id": 255,
+    "slug": "111",
+    "name_sk": "111",
+    "name_it": "111",
+    "category": "kava",
+    "sub_category": null,
+    "price": 10,
+    "compare_at_price": 8.5,
+    "volume": null,
+    "region": null,
+    "winery": null,
+    "vintage": null,
+    "alcohol": null,
+    "description_sk": "",
+    "description_it": "",
+    "image": "https://kvunflkysscrkfcsaras.supabase.co/storage/v1/object/public/product-images/255-111.webp",
+    "in_stock": true,
+    "featured": false,
+    "sort_order": 210,
+    "created_at": "2026-05-28T11:04:35.592Z",
+    "updated_at": "2026-06-10T10:39:02.871Z",
+    "wolt_url": null
+  }
+]

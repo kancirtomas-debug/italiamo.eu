@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 130" fill="none">
+  <g fill="#0e0e0e" font-family="'Arial Narrow', 'Helvetica Neue', Arial, sans-serif" text-anchor="middle">
+    <text x="120" y="32" font-size="22" font-weight="600" letter-spacing="7"
+          textLength="150" lengthAdjust="spacingAndGlyphs">FRATELLI</text>
+    <text x="120" y="82" font-size="52" font-weight="800" letter-spacing="2"
+          textLength="222" lengthAdjust="spacingAndGlyphs">MANTOVA</text>
+    <g>
+      <line x1="40" y1="106" x2="76" y2="106" stroke="#0e0e0e" stroke-width="2"/>
+      <text x="120" y="111" font-size="15" font-weight="600" letter-spacing="3"
+            textLength="80" lengthAdjust="spacingAndGlyphs">SINCE 1905</text>
+      <line x1="164" y1="106" x2="200" y2="106" stroke="#0e0e0e" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

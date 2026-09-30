@@ -2,18 +2,18 @@ export type Category =
   | "vino"
   | "kava"
   | "cestoviny"
-  | "olivy"
   | "oleje"
   | "octy"
   | "pesta"
   | "omacky"
   | "cukrovinky"
   | "bio"
-  | "grisiny";
+  | "krekry"
+  | "dzusy";
 
 export type Product = {
   slug: string;
-  name: { sk: string; it: string };
+  name: { sk: string; en: string };
   category: Category;
   subCategory?: string;
   price: number;
@@ -23,10 +23,11 @@ export type Product = {
   winery?: string;
   vintage?: string;
   alcohol?: string;
-  description: { sk: string; it: string };
+  description: { sk: string; en: string };
   image: string;
   inStock: boolean;
   featured?: boolean;
+  woltUrl?: string;
 };
 
-export type CategoryRow = { id: Category; sk: string; it: string };
+export type CategoryRow = { id: Category; sk: string; en: string };

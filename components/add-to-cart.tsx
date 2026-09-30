@@ -3,6 +3,7 @@ import { useCart } from "@/lib/cart";
 import { useState } from "react";
 import { Check, Plus, Minus } from "lucide-react";
 import { formatPrice } from "@/lib/utils";
+import { flyToCart } from "@/lib/fly-to-cart";
 import type { Locale } from "@/lib/i18n/routing";
 
 type VolumeParts = { value: number; unit: string; suffix: string } | null;
@@ -160,6 +161,10 @@ export function AddToCart({
         </div>
         <button
           onClick={() => {
+            const source = document.querySelector<HTMLElement>(
+              "[data-product-image-anchor]",
+            );
+            flyToCart(image, source);
             for (let i = 0; i < qty; i++) add({ slug, name, price, image });
             setAdded(true);
             setTimeout(() => setAdded(false), 1400);

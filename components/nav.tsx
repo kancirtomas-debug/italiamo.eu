@@ -8,7 +8,7 @@ import { CustomerModeBadge } from "./customer-mode-badge";
 export async function Nav() {
   const t = await getTranslations("nav");
   const locale = await getLocale();
-  const skipLabel = locale === "it" ? "Vai al contenuto" : "Preskočiť na obsah";
+  const skipLabel = locale === "en" ? "Skip to content" : "Preskočiť na obsah";
 
   const links: { href: string; label: string }[] = [
     { href: "/shop", label: t("shop") },
@@ -34,33 +34,41 @@ export async function Nav() {
         {skipLabel}
       </a>
 
-      <div className="max-w-[1500px] mx-auto px-3 sm:px-6 lg:px-10 h-16 flex items-center gap-2 sm:gap-6 lg:gap-8 min-w-0">
-        <Link
-          href="/"
-          aria-label="Italiamo"
-          className="flex items-center shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-sm"
-        >
-          <Logo priority />
-        </Link>
+      <div className="max-w-[1760px] mx-auto px-3 sm:px-6 lg:px-10 min-w-0">
+        <div className="h-14 sm:h-16 lg:h-16 flex items-center gap-2 sm:gap-8 lg:gap-12 min-w-0">
+          <Link
+            href="/"
+            aria-label="Italiamo"
+            className="flex items-center shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-sm"
+          >
+            <Logo priority />
+          </Link>
+
+          <nav
+            aria-label={t("shop")}
+            className="hidden md:flex items-center gap-7 lg:gap-9 text-[17px] text-ink-900 flex-1 min-w-0 overflow-hidden"
+          >
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="font-medium tracking-[-0.005em] whitespace-nowrap hover:text-terracotta-500 transition-colors motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-sm"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-1 sm:gap-4 md:ml-auto shrink-0 ml-auto">
+            <CustomerModeBadge />
+            <LocaleSwitcher />
+            <CartButton />
+          </div>
+        </div>
 
         <nav
           aria-label={t("shop")}
-          className="hidden md:flex items-center gap-5 lg:gap-6 text-[14px] text-ink-900 flex-1 min-w-0 overflow-hidden"
-        >
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="font-medium tracking-[-0.005em] whitespace-nowrap hover:text-terracotta-500 transition-colors motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-sm"
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-
-        <nav
-          aria-label={t("shop")}
-          className="md:hidden flex items-center gap-2 ml-auto text-[11px] text-ink-900 shrink-0"
+          className="md:hidden flex items-center justify-center gap-5 pb-2 pt-1 text-[14px] text-ink-900"
         >
           {mobileLinks.map((l) => (
             <Link
@@ -72,12 +80,6 @@ export async function Nav() {
             </Link>
           ))}
         </nav>
-
-        <div className="flex items-center gap-2 sm:gap-3 md:ml-auto shrink-0">
-          <CustomerModeBadge />
-          <LocaleSwitcher />
-          <CartButton />
-        </div>
       </div>
     </header>
   );

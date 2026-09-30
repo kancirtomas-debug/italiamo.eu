@@ -8,7 +8,7 @@ export function BrandMarquee({ eyebrow }: { eyebrow: string }) {
   return (
     <div className="w-full">
       <div
-        aria-label={`${eyebrow} — ${brands.map((b) => b.name).join(", ")}`}
+        aria-label={`${eyebrow} - ${brands.map((b) => b.name).join(", ")}`}
         className="relative h-[85px] sm:h-[122px] flex items-center overflow-hidden"
       >
         <div
@@ -21,25 +21,34 @@ export function BrandMarquee({ eyebrow }: { eyebrow: string }) {
               className="shrink-0 flex items-center justify-center px-3 sm:px-4 py-2 sm:py-3 overflow-hidden w-[126px] h-[77px] sm:w-[180px] sm:h-[109px]"
               title={b.name}
             >
-              <img
-                src={b.logo}
-                alt={b.name}
-                loading="lazy"
-                decoding="async"
-                referrerPolicy="no-referrer"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  opacity: 1,
-                  mixBlendMode: b.invert ? "normal" : "multiply",
-                  filter: b.invert
-                    ? "invert(1) brightness(0.55) contrast(1.3)"
-                    : b.boost
-                    ? "contrast(2.4) brightness(0.45) saturate(0)"
-                    : undefined,
-                }}
-              />
+              {b.logo ? (
+                <img
+                  src={b.logo}
+                  alt={b.name}
+                  loading="lazy"
+                  decoding="async"
+                  referrerPolicy="no-referrer"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    opacity: 1,
+                    mixBlendMode: b.invert ? "normal" : "multiply",
+                    filter: b.invert
+                      ? "invert(1) brightness(0.55) contrast(1.3)"
+                      : b.boost
+                      ? "contrast(2.4) brightness(0.45) saturate(0)"
+                      : undefined,
+                  }}
+                />
+              ) : (
+                <span
+                  className="font-display text-[20px] sm:text-[24px] tracking-[-0.01em] text-ink-900 text-center leading-tight"
+                  style={{ textWrap: "balance" }}
+                >
+                  {b.name}
+                </span>
+              )}
             </div>
           ))}
         </div>
