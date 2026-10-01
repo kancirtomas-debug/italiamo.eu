@@ -1981,7 +1981,6 @@ export const posts: BlogPost[] = [
         ],
       },
       {
-        image: { src: "/blog/penne-al-pesto-pan.webp", alt: { sk: "Penne s pestom Genovese v miske", en: "Penne with pesto Genovese in a bowl" }, side: "right" },
         heading: { sk: "Ligúrsky bonus: zemiak a fazuľka", en: "Ligurian bonus: potato and green beans" },
         paragraphs: {
           sk: [
@@ -1995,7 +1994,6 @@ export const posts: BlogPost[] = [
         },
       },
       {
-        image: { src: "/blog/wine-bottles-trio.webp", alt: { sk: "Fľaše bieleho vína na stole", en: "Bottles of white wine on a table" }, side: "left" },
         heading: { sk: "Čo k tomu nalejem do pohára", en: "What I pour with it" },
         paragraphs: {
           sk: [
