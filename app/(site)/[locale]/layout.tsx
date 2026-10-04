@@ -70,10 +70,6 @@ export const metadata: Metadata = {
       "x-default": "https://italiamo.eu/sk",
     },
   },
-  icons: {
-    icon: "/italiamo-logo.png",
-    apple: "/italiamo-logo.png",
-  },
 };
 
 export function generateStaticParams() {
