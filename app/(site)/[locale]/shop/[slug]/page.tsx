@@ -143,10 +143,57 @@ export default async function ProductPage({
     </section>
   );
 
+  const url = `https://italiamo.eu/${locale}/shop/${product.slug}`;
+  const image = product.image.startsWith("http")
+    ? product.image
+    : `https://italiamo.eu${product.image.startsWith("/") ? "" : "/"}${product.image}`;
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: stripWeight(name),
+    description,
+    image: [image],
+    sku: product.slug,
+    url,
+    ...(product.winery && {
+      brand: { "@type": "Brand", name: product.winery },
+    }),
+    offers: {
+      "@type": "Offer",
+      url,
+      price: product.price.toFixed(2),
+      priceCurrency: "EUR",
+      availability: product.inStock
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
+      itemCondition: "https://schema.org/NewCondition",
+      seller: { "@type": "Organization", name: "Italiamo Distribution s.r.o." },
+    },
+  };
+  // Escape "<" so product text can never close the script tag.
+  const jsonLd = (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(productJsonLd).replace(/</g, "\\u003c"),
+      }}
+    />
+  );
+
   if (isAlcohol(product)) {
-    return <AlcoholGate gate={gate}>{content}</AlcoholGate>;
+    return (
+      <>
+        {jsonLd}
+        <AlcoholGate gate={gate}>{content}</AlcoholGate>
+      </>
+    );
   }
-  return content;
+  return (
+    <>
+      {jsonLd}
+      {content}
+    </>
+  );
 }
 
 function Fact({ label, value }: { label?: string; value: string }) {

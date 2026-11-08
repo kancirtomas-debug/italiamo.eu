@@ -31,7 +31,8 @@ export async function generateMetadata({
   const url = `https://italiamo.eu/${locale}/blog/${post.slug}`;
 
   return {
-    title: `${title} | Italiamo`,
+    // Layout template already appends " | Italiamo"
+    title,
     description,
     keywords: post.keywords,
     alternates: {

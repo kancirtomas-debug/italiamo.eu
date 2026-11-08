@@ -38,6 +38,9 @@ async function AdminHeader() {
           <Link href="/admin/products/new" className="hover:text-terracotta-600">
             + Nový produkt
           </Link>
+          <Link href="/admin/kategorie" className="hover:text-terracotta-600">
+            Kategórie
+          </Link>
           <Link href="/admin/objednavky" className="hover:text-terracotta-600">
             Objednávky
           </Link>

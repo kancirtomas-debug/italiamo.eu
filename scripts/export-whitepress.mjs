@@ -1,7 +1,10 @@
 import { writeFileSync } from "node:fs";
 import { posts } from "../lib/blog.ts";
 
-const SLUG = process.argv[2] || "pesto-genovese-cestoviny-recept";
+// Default: newest post by date (the old hard-coded slug was deleted).
+const SLUG =
+  process.argv[2] ||
+  [...posts].sort((a, b) => b.date.localeCompare(a.date))[0].slug;
 const LOCALE = "sk";
 const BASE = "https://italiamo.eu";
 

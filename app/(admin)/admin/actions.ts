@@ -103,6 +103,60 @@ export async function createCategory(input: {
   }
 }
 
+// Category ids that site code depends on (type union in lib/products.ts).
+// They can be renamed but never deleted.
+const BUILT_IN_CATEGORIES = new Set([
+  "vino", "kava", "cestoviny", "oleje", "octy", "pesta",
+  "omacky", "cukrovinky", "bio", "krekry", "dzusy",
+]);
+
+function categoriesRedirect(msg: { ok?: string; error?: string }): never {
+  const q = new URLSearchParams(msg as Record<string, string>).toString();
+  redirect(`/admin/kategorie${q ? `?${q}` : ""}`);
+}
+
+/** Rename only: the id stays, so products keep pointing at it. */
+export async function updateCategory(formData: FormData) {
+  await requireAuth();
+  const id = String(formData.get("id") || "");
+  const sk = String(formData.get("sk") || "").trim();
+  const it = String(formData.get("it") || "").trim() || sk;
+  if (!id || !sk) categoriesRedirect({ error: "Názov kategórie (SK) je povinný" });
+
+  await withDbRetry(() =>
+    db.update(categories).set({ sk, it }).where(eq(categories.id, id)),
+  );
+  updateTag(CATEGORIES_TAG);
+  categoriesRedirect({ ok: `Kategória „${sk}" bola premenovaná` });
+}
+
+/** Delete only custom categories that no product uses. */
+export async function deleteCategory(formData: FormData) {
+  await requireAuth();
+  const id = String(formData.get("id") || "");
+  if (!id) categoriesRedirect({ error: "Chýba ID kategórie" });
+  if (BUILT_IN_CATEGORIES.has(id)) {
+    categoriesRedirect({ error: "Základnú kategóriu nie je možné vymazať, len premenovať" });
+  }
+
+  const used = await withDbRetry(() =>
+    db
+      .select({ n: sql<number>`count(*)::int` })
+      .from(products)
+      .where(sql`${products.category} = ${id} or ${products.subCategory} = ${id}`),
+  );
+  const n = used[0]?.n ?? 0;
+  if (n > 0) {
+    categoriesRedirect({
+      error: `Kategóriu používa ${n} produktov. Najprv ich presuňte do inej kategórie.`,
+    });
+  }
+
+  await withDbRetry(() => db.delete(categories).where(eq(categories.id, id)));
+  updateTag(CATEGORIES_TAG);
+  categoriesRedirect({ ok: "Kategória bola vymazaná" });
+}
+
 export async function createProduct(prev: FormState, formData: FormData): Promise<FormState> {
   await requireAuth();
   try {
