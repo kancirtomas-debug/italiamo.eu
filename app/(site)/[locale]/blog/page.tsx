@@ -3,6 +3,24 @@ import Image from "next/image";
 import { Link } from "@/lib/i18n/navigation";
 import type { Locale } from "@/lib/i18n/routing";
 import { posts } from "@/lib/blog";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+
+const META = {
+  "title": {
+    "sk": "Blog – recepty a príbehy z Talianska",
+    "en": "Blog – recipes and stories from Italy"
+  },
+  "desc": {
+    "sk": "Talianske recepty, sprievodcovia vínom, kávou a olivovým olejom. Ako vybrať pravé balsamico, prosecco či pesto a čo k nim podávať.",
+    "en": "Italian recipes and guides to wine, coffee and olive oil. How to choose real balsamic, prosecco or pesto, and what to serve with them."
+  }
+} as const;
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: "sk" | "en" }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({ locale, path: "/blog", title: META.title[locale], description: META.desc[locale] });
+}
 
 export default async function BlogIndex({
   params,

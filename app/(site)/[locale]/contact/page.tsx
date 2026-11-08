@@ -3,6 +3,24 @@ import type { Locale } from "@/lib/i18n/routing";
 import { Mail, MapPin, Phone, FileText } from "lucide-react";
 import { LeadForm } from "@/components/lead-form";
 import { COMPANY } from "@/lib/company";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+
+const META = {
+  "title": {
+    "sk": "Kontakt",
+    "en": "Contact"
+  },
+  "desc": {
+    "sk": "Kontakt na Italiamo Distribution s.r.o., Petrovany. Telefón, e-mail, adresa kancelárie a skladu. Radi poradíme s výberom vína aj veľkoodberom.",
+    "en": "Contact Italiamo Distribution s.r.o., Petrovany, Slovakia. Phone, email, office and warehouse address. Happy to help with wine choice and wholesale."
+  }
+} as const;
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: "sk" | "en" }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({ locale, path: "/contact", title: META.title[locale], description: META.desc[locale] });
+}
 
 export default async function ContactPage({
   params,

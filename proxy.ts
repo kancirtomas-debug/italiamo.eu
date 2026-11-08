@@ -2,6 +2,7 @@ import createMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
 import { routing } from "@/lib/i18n/routing";
 import { auth } from "@/lib/auth";
+import { LEGACY_PRODUCT_SLUGS } from "@/lib/legacy-slugs";
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -18,6 +19,17 @@ export default async function proxy(req: NextRequest) {
     const url = req.nextUrl.clone();
     url.pathname = localeAdmin[1];
     return NextResponse.redirect(url);
+  }
+
+  // Renamed product slugs -> real 301 (one old slug contains spaces).
+  const shop = pathname.match(/^\/(sk|en)\/shop\/([^/]+)$/);
+  if (shop) {
+    const renamed = LEGACY_PRODUCT_SLUGS[decodeURIComponent(shop[2])];
+    if (renamed) {
+      const url = req.nextUrl.clone();
+      url.pathname = `/${shop[1]}/shop/${renamed}`;
+      return NextResponse.redirect(url, 301);
+    }
   }
 
   if (pathname.startsWith("/admin")) {

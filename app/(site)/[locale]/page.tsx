@@ -11,6 +11,58 @@ import { CustomerModePicker } from "@/components/customer-mode-picker";
 import { WoltDepots } from "@/components/wolt-depots";
 import { getFeaturedProducts } from "@/lib/queries";
 import type { Locale } from "@/lib/i18n/routing";
+import type { Metadata } from "next";
+import { pageMetadata, SITE_URL } from "@/lib/seo";
+import { COMPANY } from "@/lib/company";
+
+const HOME_TITLE = {
+  sk: "Italiamo – talianske víno, káva a cestoviny z priameho importu",
+  en: "Italiamo – Italian wine, coffee and pasta, imported directly",
+};
+const HOME_DESCRIPTION = {
+  sk: "Priamy import talianskeho vína, kávy Diemme, cestovín Grano Armando, olivových olejov a balsamica. Bez sprostredkovateľov, za férovú cenu.",
+  en: "Italian wine, Diemme coffee, Grano Armando pasta, olive oils and balsamic vinegar imported directly from Italy. No middlemen, fair prices.",
+};
+const HOME_H1 = {
+  sk: "Talianske víno a potraviny – priamy import od roku 2009",
+  en: "Italian wine and food – imported directly since 2009",
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({
+    locale,
+    path: "",
+    title: HOME_TITLE[locale],
+    description: HOME_DESCRIPTION[locale],
+    absoluteTitle: true,
+  });
+}
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Italiamo",
+  legalName: COMPANY.legalName,
+  url: SITE_URL,
+  logo: `${SITE_URL}/italiamo-logo-official.png`,
+  foundingDate: "2009",
+  email: COMPANY.emails[0],
+  telephone: COMPANY.phones[0].replace(/\s/g, ""),
+  vatID: COMPANY.icDph,
+  taxID: COMPANY.ico,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: COMPANY.office.street,
+    postalCode: COMPANY.office.zip,
+    addressLocality: COMPANY.office.city,
+    addressCountry: "SK",
+  },
+};
 
 export default async function Home({
   params,
@@ -24,6 +76,10 @@ export default async function Home({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
       {/* Hero - drone-shot video background, Itali❤amo wordmark + pulsing heart */}
       <section className="relative isolate min-h-[100svh] flex flex-col overflow-hidden">
         <div className="absolute inset-0 -z-10" aria-hidden="true">
@@ -47,8 +103,10 @@ export default async function Home({
         </div>
 
         <div className="flex-1 max-w-[1760px] w-full mx-auto px-6 lg:px-10 py-10 lg:py-12 flex flex-col items-center justify-center text-center">
-          <h1
+          {/* Wordmark is the logo, not the page heading */}
+          <p
             className="hero-wordmark text-white"
+            role="img"
             aria-label="Italiamo"
           >
             <span>Itali</span>
@@ -61,6 +119,9 @@ export default async function Home({
               className="heart-beat inline-block align-middle h-[0.78em] w-auto mx-[0.04em]"
             />
             <span>amo</span>
+          </p>
+          <h1 className="mt-4 max-w-[40ch] font-sans text-[15px] sm:text-[17px] font-medium tracking-[0.01em] text-white/90 [text-shadow:0_1px_12px_rgba(0,0,0,0.35)]">
+            {HOME_H1[locale]}
           </h1>
 
           <div className="mt-10 lg:mt-12 flex justify-center w-full">

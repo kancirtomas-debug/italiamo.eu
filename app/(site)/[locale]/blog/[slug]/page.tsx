@@ -40,6 +40,7 @@ export async function generateMetadata({
       languages: {
         sk: `https://italiamo.eu/sk/blog/${post.slug}`,
         en: `https://italiamo.eu/en/blog/${post.slug}`,
+        "x-default": `https://italiamo.eu/sk/blog/${post.slug}`,
       },
     },
     openGraph: {

@@ -1,6 +1,8 @@
 import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { FileText, ExternalLink } from "lucide-react";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
 type Doc = { sk: string; en: string; url: string };
 
@@ -36,6 +38,22 @@ const docs: Doc[] = [
     url: "/dokumenty/cookies.pdf",
   },
 ];
+
+const META = {
+  "title": {
+    "sk": "Dokumenty",
+    "en": "Documents"
+  },
+  "desc": {
+    "sk": "Dokumenty na stiahnutie: obchodné podmienky, reklamačný poriadok, formulár na odstúpenie od zmluvy.",
+    "en": "Downloadable documents: terms and conditions, complaints procedure, withdrawal form."
+  }
+} as const;
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: "sk" | "en" }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({ locale, path: "/dokumenty", title: META.title[locale], description: META.desc[locale] });
+}
 
 export default async function DokumentyPage({
   params,

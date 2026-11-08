@@ -10,6 +10,8 @@ import { isAdult, isAlcohol } from "@/lib/age";
 import type { Locale } from "@/lib/i18n/routing";
 import { pickLocale } from "@/lib/utils";
 import { WINE_SUBCATEGORIES } from "@/lib/wine-subcategories";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
 const SORT_KEYS = ["featured", "price-asc", "price-desc", "sale"] as const;
 
@@ -104,6 +106,22 @@ function matchesQuery(p: Product, q: string, locale: Locale): boolean {
     .join(" ")
     .toLowerCase();
   return haystack.includes(needle);
+}
+
+const META = {
+  "title": {
+    "sk": "Obchod – talianske víno, káva a cestoviny",
+    "en": "Shop – Italian wine, coffee and pasta"
+  },
+  "desc": {
+    "sk": "Kompletná ponuka Italiamo: talianske vína, zrnková a mletá káva, cestoviny, olivové oleje, balsamico a sladkosti. Priamy import, doručenie po Slovensku.",
+    "en": "The full Italiamo range: Italian wines, coffee, pasta, olive oils, balsamic vinegar and sweets. Imported directly from Italy, delivered across Slovakia."
+  }
+} as const;
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: "sk" | "en" }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({ locale, path: "/shop", title: META.title[locale], description: META.desc[locale] });
 }
 
 export default async function ShopPage({

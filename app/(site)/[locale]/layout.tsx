@@ -13,9 +13,7 @@ import "../../globals.css";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  minimumScale: 1,
-  userScalable: false,
+  // No maximumScale / userScalable: pinch-zoom must stay available (a11y + SEO brief).
   viewportFit: "cover",
   themeColor: "#ffffff",
 };
@@ -27,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Italiamo",
   },
   description:
-    "Priamy import talianskeho vína, kávy Diemme, cestovín Grano Armando, olivových olejov a balsamica. Bez sprostredkovateľov, férová cena, plná dohľadateľnosť pôvodu.",
+    "Priamy import talianskeho vína, kávy Diemme, cestovín Grano Armando, olivových olejov a balsamica. Bez sprostredkovateľov, za férovú cenu.",
   applicationName: "Italiamo",
   keywords: [
     "talianske víno",
@@ -62,14 +60,9 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  alternates: {
-    canonical: "/",
-    languages: {
-      sk: "https://italiamo.eu/sk",
-      en: "https://italiamo.eu/en",
-      "x-default": "https://italiamo.eu/sk",
-    },
-  },
+  // No alternates here on purpose: every page sets its own canonical + hreflang
+  // (lib/seo.ts). A canonical in the layout was inherited by all pages and made
+  // Google treat products/shop/blog as duplicates of the homepage.
 };
 
 export function generateStaticParams() {

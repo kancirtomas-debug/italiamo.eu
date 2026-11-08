@@ -1,5 +1,23 @@
 import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+
+const META = {
+  "title": {
+    "sk": "Obchodné podmienky",
+    "en": "Terms and Conditions"
+  },
+  "desc": {
+    "sk": "Obchodné podmienky e-shopu Italiamo: objednávky, ceny, platba, doprava, odstúpenie od zmluvy a reklamácie.",
+    "en": "Italiamo shop terms and conditions: orders, prices, payment, delivery, withdrawal and complaints."
+  }
+} as const;
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: "sk" | "en" }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({ locale, path: "/terms", title: META.title[locale], description: META.desc[locale] });
+}
 
 export default async function TermsPage({
   params,
@@ -44,7 +62,7 @@ export default async function TermsPage({
         <section>
           <h2 className="display-sm text-ink-700 mb-3">3. Ceny a doprava</h2>
           <p>
-            Ceny sú uvedené v eurách vrátane DPH 20 %. Doprava na
+            Ceny sú uvedené v eurách vrátane DPH v zákonnej výške. Ceny pre overených firemných zákazníkov sú tiež uvedené s DPH. Doprava na
             území SR: 4,90 € pri objednávke pod 80 €, zdarma pri
             objednávke nad 80 €. Doručenie do 2-3 pracovných dní
             kuriérom GLS alebo Packeta.
@@ -148,7 +166,7 @@ export default async function TermsPage({
         <section>
           <h2 className="display-sm text-ink-700 mb-3">3. Prices and shipping</h2>
           <p>
-            Prices are in euros, including 20% VAT. Shipping within
+            Prices are in euros and include VAT at the statutory rate. Prices for verified business customers are also shown including VAT. Shipping within
             Slovakia: €4.90 for orders under €80, free for orders over
             €80. Delivery in 2-3 working days (GLS / Packeta).
           </p>

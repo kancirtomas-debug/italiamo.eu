@@ -1,5 +1,6 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
+import { LEGACY_PRODUCT_SLUGS } from "@/lib/legacy-slugs";
 import { Link } from "@/lib/i18n/navigation";
 import Image from "next/image";
 import { getProduct, getProducts } from "@/lib/queries";
@@ -10,6 +11,31 @@ import { AlcoholGate } from "@/components/alcohol-gate";
 import { stripWeight, pickLocale } from "@/lib/utils";
 import type { Locale } from "@/lib/i18n/routing";
 import { ArrowLeft, Wine } from "lucide-react";
+import type { Metadata } from "next";
+import { pageMetadata, metaDescription } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const product = await getProduct(slug);
+  if (!product) return { robots: { index: false } };
+  const name = stripWeight(pickLocale(product.name, locale));
+  const description = metaDescription(
+    pickLocale(product.description, locale) ||
+      (locale === "en" ? `${name} from Italiamo, imported directly from Italy.` : `${name} od Italiamo, priamo z Talianska.`),
+  );
+  return pageMetadata({
+    locale,
+    path: `/shop/${product.slug}`,
+    title: name,
+    description,
+    image: product.image,
+    imageAlt: name,
+  });
+}
 
 export async function generateStaticParams() {
   const products = await getProducts();
@@ -24,6 +50,8 @@ export default async function ProductPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
   const t = await getTranslations();
+  const renamed = LEGACY_PRODUCT_SLUGS[decodeURIComponent(slug)];
+  if (renamed) permanentRedirect(`/${locale}/shop/${renamed}`);
   const product = await getProduct(slug);
   if (!product) notFound();
   const name = pickLocale(product.name, locale);

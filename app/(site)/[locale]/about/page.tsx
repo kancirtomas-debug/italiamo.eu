@@ -3,6 +3,24 @@ import Image from "next/image";
 import { Link } from "@/lib/i18n/navigation";
 import type { Locale } from "@/lib/i18n/routing";
 import { BrandMarquee } from "@/components/brand-marquee";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+
+const META = {
+  "title": {
+    "sk": "O nás",
+    "en": "About us"
+  },
+  "desc": {
+    "sk": "Italiamo je od roku 2009 výhradným importérom vybraných talianskych vinárstiev a výrobcov potravín. Spoznajte náš príbeh a značky.",
+    "en": "Since 2009 Italiamo has been the exclusive importer of selected Italian wineries and food producers. Our story and the brands we carry."
+  }
+} as const;
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: "sk" | "en" }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({ locale, path: "/about", title: META.title[locale], description: META.desc[locale] });
+}
 
 export default async function AboutPage({
   params,

@@ -83,6 +83,9 @@ export function AddToCart({
           <span className="font-sans font-semibold text-[28px] tabular-nums tracking-[-0.01em] text-ink-900">
             {formatPrice(price, locale)}
           </span>
+          <span className="text-[13px] text-ink-500">
+            {locale === "en" ? "incl. VAT" : "s DPH"}
+          </span>
           {volume && (
             <span className="text-[13px] text-ink-500 ml-auto">{volume}</span>
           )}
@@ -102,6 +105,9 @@ export function AddToCart({
           className="font-sans font-semibold text-[28px] tabular-nums tracking-[-0.01em] text-ink-900 inline-block animate-qty-pop"
         >
           {formatPrice(total, locale)}
+        </span>
+        <span className="text-[13px] text-ink-500">
+          {locale === "en" ? "incl. VAT" : "s DPH"}
         </span>
         {compareTotal && compareTotal > total && (
           <span

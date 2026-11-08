@@ -156,6 +156,9 @@ export function CartView({ locale }: { locale: Locale }) {
               </div>
               <span className="font-medium text-[14px] text-ink-500 tabular-nums">
                 {formatPrice(it.price, locale)}
+                <span className="block text-[11px] font-normal">
+                  {locale === "en" ? "incl. VAT" : "s DPH"}
+                </span>
               </span>
               <span className="font-semibold text-[16px] tabular-nums text-ink-900">
                 {formatPrice(it.price * it.quantity, locale)}

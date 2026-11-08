@@ -2,6 +2,13 @@ import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { CheckoutView } from "./checkout-view";
 import { COMPANY } from "@/lib/company";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: "sk" | "en" }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return { title: {"sk":"Pokladňa","en":"Checkout"}[locale], robots: { index: false, follow: true } };
+}
 
 export default async function CheckoutPage({
   params,

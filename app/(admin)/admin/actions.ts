@@ -162,7 +162,9 @@ export async function createProduct(prev: FormState, formData: FormData): Promis
   try {
     const nameSk = (formData.get("nameSk") as string).trim();
     const nameIt = (formData.get("nameIt") as string).trim() || nameSk;
-    const slug = ((formData.get("slug") as string)?.trim() || slugify(nameSk));
+    // Always normalise: a typed slug like "SAN CARLO CHIPS" used to be saved
+    // as-is and produced a URL the admin itself could not open.
+    const slug = slugify((formData.get("slug") as string)?.trim() || nameSk);
     if (!slug) return { error: "Slug required" };
     const existing = await withDbRetry(() =>
       db.select({ id: products.id }).from(products).where(eq(products.slug, slug)).limit(1),

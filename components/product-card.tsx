@@ -32,7 +32,7 @@ export function ProductCard({
     <div className="relative aspect-square bg-white overflow-hidden">
       <Image
         src={product.image}
-        alt=""
+        alt={stripWeight(name)}
         fill
         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
         className={`object-contain object-center scale-[0.7] transition-transform duration-500 ease-out motion-safe:group-hover:scale-[0.72] ${
@@ -97,6 +97,9 @@ export function ProductCard({
                   {formatPrice(product.compareAtPrice, locale)}
                 </span>
               )}
+              <span className="text-[11px] text-ink-500">
+                {locale === "en" ? "incl. VAT" : "s DPH"}
+              </span>
             </span>
 
             <span

@@ -1,5 +1,23 @@
 import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+
+const META = {
+  "title": {
+    "sk": "Ochrana súkromia",
+    "en": "Privacy Policy"
+  },
+  "desc": {
+    "sk": "Ako Italiamo Distribution s.r.o. spracúva osobné údaje zákazníkov a používa cookies.",
+    "en": "How Italiamo Distribution s.r.o. processes customer personal data and uses cookies."
+  }
+} as const;
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: "sk" | "en" }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({ locale, path: "/privacy", title: META.title[locale], description: META.desc[locale] });
+}
 
 export default async function PrivacyPage({
   params,
