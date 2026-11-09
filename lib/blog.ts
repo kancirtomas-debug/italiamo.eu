@@ -2042,6 +2042,211 @@ export const posts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "spaghetti-aglio-olio-peperoncino-recept",
+    productSlugs: [
+      "semolinove-cestoviny-z-psenice-triticum-durum-zn-grano-armandotyp-spaghetti-500g",
+      "extra-panensky-olivovy-olej-fratelli-mantova-equlibrato-500ml-v-skle",
+      "grano-armando-spaghetto-500g",
+      "saomi-suche-vino-sumive-brut-prosecco-d-o-c-trevisospumante-vinarstvo-la-tordera",
+    ],
+    date: "2026-11-09",
+    cover: "/blog/aglio-olio-cover.webp",
+    readMinutes: 6,
+    title: {
+      sk: "Spaghetti aglio, olio e peperoncino: polnočné cestoviny z Neapola za 12 minút",
+      en: "Spaghetti aglio, olio e peperoncino: Naples' midnight pasta in 12 minutes",
+    },
+    excerpt: {
+      sk: "Cesnak, olivový olej, štipka čili a hrniec vody. Najlacnejšie talianske jedlo, ktoré sa dá pokaziť jedinou chybou. Ukážem ti, ako sa jej vyhnúť.",
+      en: "Garlic, olive oil, a pinch of chilli and a pot of water. The cheapest Italian dish there is, and one mistake ruins it. Here is how to avoid it.",
+    },
+    description: {
+      sk: "Recept na spaghetti aglio olio e peperoncino ako v Neapole: ako opražiť cesnak, aby nezhorkol, a ako z oleja a vody z varenia urobiť krémovú omáčku.",
+      en: "Spaghetti aglio olio e peperoncino the Neapolitan way: how to fry garlic so it never turns bitter, and how to turn oil and pasta water into a creamy sauce.",
+    },
+    keywords: [
+      "aglio olio",
+      "spaghetti aglio olio",
+      "aglio olio peperoncino recept",
+      "špagety s cesnakom a olivovým olejom",
+      "rýchle cestoviny",
+      "talianske cestoviny recept",
+      "bezlepkové špagety recept",
+      "spaghettata di mezzanotte",
+    ],
+    sections: [
+      {
+        heading: { sk: "", en: "" },
+        paragraphs: {
+          sk: [
+            "V Neapole sa tomu hovorí spaghettata di mezzanotte, polnočné špagety. Vrátiš sa neskoro domov, v chladničke nič, ale v špajzi máš balík špagiet, fľašu olivového oleja a hlávku cesnaku. O dvanásť minút ješ jedno z najlepších jedál talianskej kuchyne.",
+            "Aglio, olio e peperoncino znamená cesnak, olej a čili. Nič viac v tom nie je, a práve preto je to ťažšie, než to vyzerá. Keď cesnak spáliš, celý tanier je horký a nič ho nezachráni. Keď omáčku nespojíš, máš mastné cestoviny v mláke oleja. Obe chyby sa dajú ľahko obísť.",
+          ],
+          en: [
+            "In Naples they call it spaghettata di mezzanotte, midnight spaghetti. You get home late, the fridge is empty, but the cupboard has a packet of spaghetti, a bottle of olive oil and a head of garlic. Twelve minutes later you are eating one of the best dishes in Italian cooking.",
+            "Aglio, olio e peperoncino means garlic, oil and chilli. There is nothing else in it, which is exactly why it is harder than it looks. Burn the garlic and the whole plate turns bitter with no way back. Skip the emulsion and you get greasy pasta sitting in a puddle of oil. Both mistakes are easy to avoid.",
+          ],
+        },
+      },
+      {
+        image: { src: "/blog/aglio-olio-olivovy-olej.webp", alt: { sk: "Sklenený džbán s extra panenským olivovým olejom, olivy a olivová ratolesť", en: "Glass jug of extra virgin olive oil with olives and an olive branch" }, side: "right" },
+        heading: { sk: "Suroviny pre dvoch", en: "Ingredients for two" },
+        paragraphs: {
+          sk: [
+            "Keď má jedlo štyri suroviny, každá z nich je cítiť. Olej tu nie je na smaženie, je to omáčka. Ja beriem [Fratelli Mantova Equilibrato](/shop/extra-panensky-olivovy-olej-fratelli-mantova-equlibrato-500ml-v-skle), extra panenský olej s jemnou chuťou, ktorý cesnak neprebije. Ako spoznať dobrý olivový olej, sme rozobrali v [článku o oleji z Apúlie](/blog/olivovy-olej-apulia-pravy).",
+            "Na špagety chceš poriadnu pšenicu, lebo bez škrobu sa omáčka nespojí. [Grano Armando Spaghetti](/shop/semolinove-cestoviny-z-psenice-triticum-durum-zn-grano-armandotyp-spaghetti-500g) sú z talianskej tvrdej pšenice a do vody pustia presne toľko škrobu, koľko treba.",
+          ],
+          en: [
+            "When a dish has four ingredients, you taste every one of them. The oil here is not for frying, it is the sauce. I use [Fratelli Mantova Equilibrato](/shop/extra-panensky-olivovy-olej-fratelli-mantova-equlibrato-500ml-v-skle), a mild extra virgin oil that does not shout over the garlic. How to tell a good olive oil from a bad one is in our [article on Apulian olive oil](/blog/olivovy-olej-apulia-pravy).",
+            "For the spaghetti you want proper wheat, because without starch the sauce will not come together. [Grano Armando Spaghetti](/shop/semolinove-cestoviny-z-psenice-triticum-durum-zn-grano-armandotyp-spaghetti-500g) are made from Italian durum wheat and release just the right amount of starch into the water.",
+          ],
+        },
+        lists: [
+          {
+            items: {
+              sk: [
+                "200 g špagiet",
+                "6 lyžíc extra panenského olivového oleja, asi 90 ml",
+                "3 až 4 strúčiky cesnaku",
+                "1 sušená čili paprička alebo pol lyžičky čili vločiek (podľa toho, ako pálivé to máš rád)",
+                "hrsť čerstvej petržlenovej vňate",
+                "hrubá soľ do vody",
+                "Čas: 12 minút. Porcie: 2.",
+              ],
+              en: [
+                "200 g spaghetti",
+                "6 tablespoons extra virgin olive oil, about 90 ml",
+                "3 to 4 garlic cloves",
+                "1 dried chilli or half a teaspoon of chilli flakes (depending on how hot you like it)",
+                "a handful of fresh flat-leaf parsley",
+                "coarse salt for the water",
+                "Time: 12 minutes. Serves: 2.",
+              ],
+            },
+          },
+        ],
+      },
+      {
+        image: { src: "/blog/aglio-olio-cesnak-cili-krajanie.webp", alt: { sk: "Krájanie cesnaku a čerstvej čili papričky na doske", en: "Slicing garlic and fresh chilli on a chopping board" }, side: "left" },
+        heading: { sk: "Celé tajomstvo je v cesnaku", en: "The whole secret is the garlic" },
+        paragraphs: {
+          sk: [
+            "Cesnak nakrájaj na tenké plátky, nie nadrob a nelisuj. Lisovaný cesnak sa na oleji spáli za pár sekúnd a pustí ostrú, štipľavú chuť. Plátky sa opražia pomaly a rovnomerne.",
+            "Dôležitejšie je, kedy ho do oleja dáš. Nikdy nie do rozpáleného. Cesnak vlož do studeného oleja na panvici a až potom zapni mierny plameň. Olej sa ohrieva spolu s ním, cesnak pustí vôňu a za tri až štyri minúty má farbu svetlého zlata. Vtedy panvicu stiahni z ohňa. Keď zhnedne, je neskoro: vyhoď ho a začni znova, inak bude horký celý tanier.",
+          ],
+          en: [
+            "Slice the garlic thinly, do not mince or crush it. Crushed garlic burns in oil within seconds and turns sharp and acrid. Slices cook slowly and evenly.",
+            "More important is when it goes into the oil. Never into hot oil. Put the garlic into cold oil in the pan and only then turn on a low flame. The oil warms up with it, the garlic releases its aroma, and after three or four minutes it is a pale gold colour. That is when you pull the pan off the heat. If it turns brown, it is too late: throw it out and start again, or the whole plate will taste bitter.",
+          ],
+        },
+      },
+      {
+        heading: { sk: "Postup krok za krokom", en: "Step by step" },
+        paragraphs: { sk: [], en: [] },
+        lists: [
+          {
+            ordered: true,
+            items: {
+              sk: [
+                "Daj variť veľký hrniec vody a osoľ ju. Kým zovrie, nakrájaj cesnak na tenké plátky, nasekaj petržlen a čili rozdrv alebo nakrájaj na kolieska.",
+                "Špagety hoď do vriacej vody a var ich o dve minúty kratšie, než píše obal. Dovaria sa na panvici.",
+                "Na studenú širokú panvicu nalej olivový olej, pridaj cesnak a čili a zapni mierny oheň. Miešaj a sleduj farbu cesnaku.",
+                "Keď je cesnak svetlo zlatý, stiahni panvicu z ohňa. Prilej do nej naberačku vody z cestovín. Zasyčí to, to je v poriadku. Voda zastaví praženie a začne sa miešať s olejom.",
+                "Špagety preber kliešťami priamo z hrnca do panvice. Trocha vody, čo na nich zostane, je vítaná.",
+                "Vráť panvicu na stredný oheň a minútu až dve s cestovinou energicky miešaj a potriasaj. Olej sa so škrobovou vodou spojí do svetlej krémovej omáčky, ktorá sa chytí každej špagety. Ak je to suché, prilej ďalšiu lyžicu vody.",
+                "Vypni oheň, pridaj petržlen a lyžicu surového olivového oleja na vôňu. Ochutnaj, prípadne prisoľ a podávaj hneď.",
+              ],
+              en: [
+                "Bring a large pot of water to the boil and salt it. While it heats up, slice the garlic thinly, chop the parsley and crumble the chilli or cut it into rings.",
+                "Drop the spaghetti into the boiling water and cook it two minutes less than the packet says. It will finish cooking in the pan.",
+                "Pour the olive oil into a cold, wide frying pan, add the garlic and chilli and turn on a low flame. Stir and keep an eye on the colour of the garlic.",
+                "When the garlic is pale gold, take the pan off the heat. Add a ladle of the pasta water. It will hiss, which is fine. The water stops the frying and starts to blend with the oil.",
+                "Lift the spaghetti with tongs straight from the pot into the pan. A bit of water clinging to it is welcome.",
+                "Put the pan back on a medium flame and toss and stir the pasta hard for one to two minutes. The oil and the starchy water come together into a pale, creamy sauce that coats every strand. If it looks dry, add another spoonful of water.",
+                "Turn off the heat, add the parsley and a spoonful of raw olive oil for aroma. Taste, add salt if needed and serve straight away.",
+              ],
+            },
+          },
+        ],
+      },
+      {
+        image: { src: "/blog/aglio-olio-tanier-peperoncino.webp", alt: { sk: "Tanier špagiet aglio olio e peperoncino s čili papričkami a cesnakom okolo", en: "A plate of spaghetti aglio olio e peperoncino surrounded by chillies and garlic" }, side: "right" },
+        heading: { sk: "Syr áno, alebo nie?", en: "Cheese or no cheese?" },
+        paragraphs: {
+          sk: [
+            "V Neapole ti povedia, že nie. Aglio olio je jedlo bez syra a parmezán by prekryl cesnak aj olej. Ja ho sem nedávam a odporúčam vyskúšať aspoň raz čistú verziu.",
+            "Ak ti predsa niečo chýba, sprav to, čo robia na juhu Talianska, keď nemajú na syr: opraž na suchej panvici dve lyžice strúhanky dozlatista a posyp ňou hotový tanier. Volá sa to pangrattato, chudobný parmezán, a dodá cestovinám chrumkavosť.",
+          ],
+          en: [
+            "In Naples they will tell you no. Aglio olio is a dish without cheese, and Parmesan would cover up the garlic and the oil. I leave it out, and I suggest you try the pure version at least once.",
+            "If you still feel something is missing, do what they do in southern Italy when there is no money for cheese: toast two tablespoons of breadcrumbs in a dry pan until golden and scatter them over the finished plate. It is called pangrattato, poor man's Parmesan, and it adds crunch.",
+          ],
+        },
+      },
+      {
+        heading: { sk: "Bezlepková verzia", en: "Gluten-free version" },
+        paragraphs: {
+          sk: [
+            "Recept funguje aj s bezlepkovými špagetami, len treba dať pozor na dve veci. Bezlepkové cestoviny pustia do vody menej škrobu, preto si odlož o trocha viac vody z varenia a na panvici miešaj o niečo dlhšie. A var ich presne podľa obalu, nie kratšie, lebo sa na panvici už tak dobre nedovaria.",
+            "So [špagetami Grano Armando bez lepku](/shop/grano-armando-spaghetto-500g) postupuješ úplne rovnako, len s týmito dvoma úpravami. Cesnak, olej a čili lepok nepotrebujú.",
+          ],
+          en: [
+            "The recipe also works with gluten-free spaghetti, with two things to watch. Gluten-free pasta releases less starch into the water, so keep back a little more cooking water and toss for a bit longer in the pan. And cook it exactly as the packet says, not shorter, because it does not finish cooking in the pan as well.",
+            "With [Grano Armando gluten-free spaghetti](/shop/grano-armando-spaghetto-500g) you follow exactly the same steps, just with those two adjustments. Garlic, oil and chilli do not need gluten.",
+          ],
+        },
+      },
+      {
+        image: { src: "/blog/aglio-olio-cesnak.webp", alt: { sk: "Hlávka cesnaku a strúčiky s nožom na tmavej doske", en: "A head of garlic and cloves with a knife on a dark board" }, side: "left", size: "sm" },
+        heading: { sk: "Čo k tomu nalejem do pohára", en: "What I pour with it" },
+        paragraphs: {
+          sk: [
+            "Cesnak, olej a čili potrebujú víno, ktoré ich osvieži, nie ťažké červené. Mne k tomuto tanieru najviac sedí suché prosecco. Bublinky a kyselina prerežú olej a čili sa s nimi príjemne háda. Skús [La Tordera Saomi Prosecco Brut](/shop/saomi-suche-vino-sumive-brut-prosecco-d-o-c-trevisospumante-vinarstvo-la-tordera), je suché a nesladké. Rozdiel medzi Brut a Extra Dry sme vysvetlili v [porovnaní prosecca, champagne a cavy](/blog/prosecco-vs-champagne-cava).",
+            "Ak sa ti po jedle žiada niečo sladké, urob to po taliansky: [espresso z kávy Diemme](/blog/caffe-diemme-padova-talianska-kava) a k nemu dve alebo tri [cantuccini Marini](/shop/cantuccini-typicke-talianske-susienky-s-mandlami-zn-marini-200g) na namáčanie.",
+          ],
+          en: [
+            "Garlic, oil and chilli need a wine that freshens them up, not a heavy red. With this plate I like a dry prosecco best. The bubbles and acidity cut through the oil and the chilli plays nicely against them. Try [La Tordera Saomi Prosecco Brut](/shop/saomi-suche-vino-sumive-brut-prosecco-d-o-c-trevisospumante-vinarstvo-la-tordera), which is dry and not sweet. The difference between Brut and Extra Dry is explained in our [prosecco, champagne and cava comparison](/blog/prosecco-vs-champagne-cava).",
+            "If you want something sweet afterwards, do it the Italian way: an [espresso made with Diemme coffee](/blog/caffe-diemme-padova-talianska-kava) with two or three [Marini cantuccini](/shop/cantuccini-typicke-talianske-susienky-s-mandlami-zn-marini-200g) for dunking.",
+          ],
+        },
+      },
+      {
+        heading: { sk: "Časté otázky", en: "Frequently asked questions" },
+        paragraphs: { sk: [], en: [] },
+        faqs: [
+          {
+            q: { sk: "Prečo je mi cesnak horký?", en: "Why does my garlic taste bitter?" },
+            a: {
+              sk: "Spálil sa. Dávaj ho do studeného oleja, praž na miernom ohni a stiahni panvicu, keď je svetlo zlatý. Hnedý cesnak už nezachrániš, treba začať odznova.",
+              en: "It burned. Put it into cold oil, cook it on a low flame and take the pan off when it is pale gold. Brown garlic cannot be saved, you need to start again.",
+            },
+          },
+          {
+            q: { sk: "Prečo sú cestoviny mastné a omáčka sa nespojí?", en: "Why is the pasta greasy and the sauce will not come together?" },
+            a: {
+              sk: "Chýba voda z varenia, alebo miešaš príliš krátko. Pridaj naberačku škrobovej vody a minútu až dve s cestovinou na panvici energicky potriasaj. Škrob spojí olej s vodou do krémovej omáčky.",
+              en: "The cooking water is missing, or you are not tossing long enough. Add a ladle of starchy water and toss the pasta hard in the pan for one to two minutes. The starch binds the oil and water into a creamy sauce.",
+            },
+          },
+          {
+            q: { sk: "Môžem použiť čerstvé čili namiesto sušeného?", en: "Can I use fresh chilli instead of dried?" },
+            a: {
+              sk: "Áno. Nakrájaj ho na tenké kolieska a daj na panvicu spolu s cesnakom. Čerstvé čili je šťavnatejšie a pálivosť sa líši podľa druhu, takže začni menším množstvom.",
+              en: "Yes. Slice it into thin rings and add it to the pan with the garlic. Fresh chilli is juicier and its heat varies by variety, so start with less.",
+            },
+          },
+          {
+            q: { sk: "Dá sa aglio olio pripraviť dopredu?", en: "Can aglio olio be made ahead?" },
+            a: {
+              sk: "Nie veľmi. Omáčka z oleja a vody drží len pár minút, potom ju cestoviny vpijú a jedlo vyschne. Je to recept na teraz hneď, ale za 12 minút ho máš na stole.",
+              en: "Not really. The oil and water sauce holds for a few minutes only, then the pasta soaks it up and the dish dries out. It is a recipe for right now, but it is on the table in 12 minutes.",
+            },
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string) {
